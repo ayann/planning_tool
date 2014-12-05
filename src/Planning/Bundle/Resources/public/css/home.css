@@ -1,4 +1,4 @@
-body{background: #eee url(insta.png);}
+body{background: #eee }
 html,body{
   position: relative;
   height: 100%;
@@ -67,6 +67,12 @@ html,body{
 .avatar img{
   width: 80%;
   margin: 0 auto;
+  cursor: pointer;
+}
+
+.avatar img:hover{
+  -webkit-animation: rotate infinite; /* Chrome, Safari, Opera */
+  animation: rotate infinite;
 }
 
 .form-box input{
@@ -176,11 +182,30 @@ html,body{
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
+  -webkit-transition: all .2s;
+  -o-transition: all .2s;
+  transition: all .2s;
 }
 
 .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open .dropdown-toggle.btn-info {
   color: #fff;
-  background-color: #db5a0f;
-  border-color: #db5508;
+  background-color: #9D357A;
+  border-color: #9b0767;
   outline: none;
+}
+
+@-moz-keyframes rotate {
+  0%, 100% {-moz-transform: rotate(0deg);}
+  33% {-moz-transform: rotate(15deg);}
+  66% {-moz-transform: rotate(80deg);}
+}
+@-webkit-keyframes rotate {
+  0%, 100% {-webkit-transform: rotate(0deg);}
+  33% {-webkit-transform: rotate(15deg);}
+  66% {-webkit-transform: rotate(80deg);}
+}
+@keyframes rotate {
+  0%, 100% {transform: rotate(0deg);}
+  33% {transform: rotate(15deg);}
+  66% {transform: rotate(-15deg);}
 }
