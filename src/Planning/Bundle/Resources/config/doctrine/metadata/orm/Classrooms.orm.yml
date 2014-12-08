@@ -1,0 +1,43 @@
+Classrooms:
+    type: entity
+    table: classrooms
+    indexes:
+        fk_class_rooms_establishments1_idx:
+            columns:
+                - establishments_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        numberOfComputer:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: number_of_computer
+        numberOfClass:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: number_of_class
+        capacityOfClass:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: capacity_of_class
+        establishmentsId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: establishments_id
+    lifecycleCallbacks: {  }

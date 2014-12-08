@@ -1,0 +1,61 @@
+Plannings:
+    type: entity
+    table: plannings
+    indexes:
+        fk_plannings_class_rooms_idx:
+            columns:
+                - class_rooms_id
+        fk_plannings_promos1_idx:
+            columns:
+                - promos_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        startTime:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: start_time
+        endTime:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: end_time
+        month:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+        classRoomsId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: class_rooms_id
+        promosId:
+            type: integer
+            nullable: false
+            unsigned: true
+            comment: ''
+            column: promos_id
+        content:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+        description:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }

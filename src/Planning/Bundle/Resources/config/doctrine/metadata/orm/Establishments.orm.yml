@@ -1,0 +1,46 @@
+Establishments:
+    type: entity
+    table: establishments
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        address:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+        phone:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            comment: ''
+        email:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+        subwayLine:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: subway_line
+        accessPlan:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: ''
+            column: access_plan
+    lifecycleCallbacks: {  }

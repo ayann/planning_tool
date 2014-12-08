@@ -5,7 +5,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -73,6 +73,83 @@ swiftmailer:
     spool:     { type: memory }
 
 fos_user:
-    db_driver: orm 
-    firewall_name: main
-    user_class: User\Bundle\Entity\User
+    db_driver:            orm # Required
+    user_class:           User\Bundle\Entity\User # Required
+    firewall_name:        main # Required
+    model_manager_name:   ~
+    use_listener:         true
+    use_flash_notifications:  true
+    use_username_form_type:  true
+    from_email:
+        address:              webmaster@example.com
+        sender_name:          webmaster
+    profile:
+        form:
+            type:                 fos_user_profile
+            name:                 fos_user_profile_form
+            validation_groups:
+
+                # Defaults:
+                - Profile
+                - Default
+    change_password:
+        form:
+            type:                 fos_user_change_password
+            name:                 fos_user_change_password_form
+            validation_groups:
+
+                # Defaults:
+                - ChangePassword
+                - Default
+
+    registration:
+        confirmation:
+            enabled:              false
+            template:             FOSUserBundle:Registration:email.txt.twig
+            from_email:
+                address:              info@Insta.fr # Required
+                sender_name:          Insta # Required
+        form:
+            type:                 fos_user_registration
+            name:                 fos_user_registration_form
+            validation_groups:
+
+                # Defaults:
+                - Registration
+                - Default
+    resetting:
+        token_ttl:            86400
+        email:
+            template:             FOSUserBundle:Resetting:email.txt.twig
+            from_email:
+                address:              info@Insta.fr # Required
+                sender_name:          Insta # Required
+
+        form:
+            type:                 fos_user_resetting
+            name:                 fos_user_resetting_form
+            validation_groups:
+
+                # Defaults:
+                - ResetPassword
+                - Default
+
+    service:
+        mailer:               fos_user.mailer.default
+        email_canonicalizer:  fos_user.util.canonicalizer.default
+        token_generator:      fos_user.util.token_generator.default
+        username_canonicalizer:  fos_user.util.canonicalizer.default
+        user_manager:         fos_user.user_manager.default
+
+
+    group:
+        group_class:          UserBundle\Entity\Group # Required
+        group_manager:        fos_user.group_manager.default
+        form:
+            type:                 fos_user_group
+            name:                 fos_user_group_form
+            validation_groups:
+
+                # Defaults:
+                - Registration
+                - Default

@@ -1,0 +1,22 @@
+Holidays:
+    type: entity
+    table: holidays
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        start:
+            type: date
+            nullable: true
+            comment: ''
+        end:
+            type: date
+            nullable: true
+            comment: ''
+    lifecycleCallbacks: {  }

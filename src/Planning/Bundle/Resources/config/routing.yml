@@ -3,6 +3,8 @@
 #   defaults:  { _controller: AcmeBlogBundle:Blog:index, page: 1 }
 #   requirements:
 #     page:  \d+
+
+
 planning_index:
   path:   /
-  defaults:  { _controller: PlanningBundle:Default:index }
+  defaults:  { _controller: PlanningBundle:Planning:index }

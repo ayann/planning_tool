@@ -1,0 +1,46 @@
+Soutenances:
+    type: entity
+    table: soutenances
+    indexes:
+        fk_soutenances_classrooms1_idx:
+            columns:
+                - classrooms_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        group:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+        startTime:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: start_time
+        endTime:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: end_time
+        description:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+        classroomsId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: classrooms_id
+    lifecycleCallbacks: {  }

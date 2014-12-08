@@ -1,0 +1,83 @@
+Users:
+    type: entity
+    table: users
+    indexes:
+        fk_users_promos1_idx:
+            columns:
+                - promos_id
+        fk_users_soutenances1_idx:
+            columns:
+                - soutenances_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        lastName:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: last_name
+        firstName:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+            column: first_name
+        email:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+        phome:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+        address:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+        personnalComputer:
+            type: boolean
+            nullable: true
+            comment: ''
+            default: '1'
+            column: personnal_computer
+        groupsId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: groups_id
+        promosId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: promos_id
+        soutenancesId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: soutenances_id
+        role:
+            type: string
+            nullable: true
+            length: 45
+            fixed: false
+            comment: ''
+    lifecycleCallbacks: {  }
