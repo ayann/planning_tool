@@ -2,9 +2,9 @@
 
 {% block body %}
 
-        <div class="container">
-            <div class="login-container">
-              <div id="output">
+    <div class="container">
+        <div class="login-container">
+            <div id="output">
                 {% for type, messages in app.session.flashbag.all() %}
                     {% for message in messages %}
                         <div class="flash-{{ type }}">
@@ -12,17 +12,15 @@
                         </div>
                     {% endfor %}
                 {% endfor %}
-              </div>
-              <div class="avatar">
+            </div>
+            <div class="avatar">
                 <img src="{{ asset('bundles/planning/images/logo.png') }}" alt="Cfa Insta!" />
-              </div>
-              <div class="form-box">
-                  
+            </div>
+            <div class="form-box">
                 {% block fos_user_content %}
                 {% endblock fos_user_content %}
-                  
-              </div>
             </div>
         </div>
+    </div>
 
 {% endblock body %}

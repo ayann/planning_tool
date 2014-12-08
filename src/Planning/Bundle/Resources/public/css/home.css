@@ -1,17 +1,17 @@
 body{background: #eee }
 html,body{
-  position: relative;
-  height: 100%;
+  position: relative !important;
+  height: 100% !important;
 }
 
 .login-container{
-  position: relative;
-  width: 300px;
-  margin: 80px auto;
-  padding: 20px 40px 40px;
-  text-align: center;
-  background: #fff;
-  border: 1px solid #ccc;
+  position: relative !important;
+  width: 300px !important;
+  margin: 80px auto !important;
+  padding: 20px 40px 40px !important;
+  text-align: center !important;
+  background: #fff !important;
+  border: 1px solid #ccc !important;
 }
 
 #output{
@@ -55,7 +55,7 @@ html,body{
 }
 
 .avatar{
-  line-height: 115px;
+  line-height: 85px;
   width: 100px;height: 100px;
   margin: 10px auto 30px;
   border-radius: 100%;
@@ -76,34 +76,37 @@ html,body{
 }
 
 .form-box input{
-  width: 92%;
-  padding: 10px;
-  text-align: center;
-  height:40px;
-  border: 1px solid #ccc;;
-  background: #fafafa;
-  transition:0.2s ease-in-out;
+  width: 100% !important;
+  padding: 10px !important;
+  text-align: center !important;
+  height:40px !important;
+  border: 1px solid #ccc !important;
+  background: #fafafa !important;
+  transition:0.2s ease-in-out !important;
+  text-shadow: none !important;
+  margin: 0 !important;
+  color: black ;
 
 }
 
 .form-box input:focus{
-  outline: 0;
-  background: #eee;
+  outline: 0 !important;
+  background: #eee !important;
 }
 
 .form-box input[type="text"]{
-  border-radius: 5px 5px 0 0;
-  text-transform: lowercase;
+  border-radius: 5px 5px 0 0 !important;
+  text-transform: lowercase !important;
 }
 
 .form-box input[type="password"]{
-  border-radius: 0 0 5px 5px;
-  border-top: 0;
+  border-radius: 0 0 5px 5px !important;
+  border-top: 0 !important;
 }
 
 .form-box button.login{
-  margin-top:15px;
-  padding: 10px 20px;
+  margin-top:15px !important;
+  padding: 10px 20px !important;
 }
 
 .animated {
@@ -159,39 +162,44 @@ html,body{
   padding-right: 0;
 }
 .btn-info {
-  color: #fff;
-  background-color: #DD6A23;
-  border-color: #46b8da;
+  color: #fff !important;
+  background-color: #DD6A23 !important;
+  border-color: #46b8da !important;
 }
 .btn {
-  display: inline-block;
-  margin-bottom: 0;
-  font-weight: 400;
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
-  white-space: nowrap;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.428571429;
-  border-radius: 4px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-  -webkit-transition: all .2s;
-  -o-transition: all .2s;
-  transition: all .2s;
+  display: inline-block !important;
+  margin-bottom: 0 !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  cursor: pointer !important;
+  background-image: none !important;
+  border: 1px solid transparent !important;
+  white-space: nowrap !important;
+  padding: 6px 12px !important;
+  font-size: 14px !important;
+  line-height: 1.428571429 !important;
+  border-radius: 4px !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  -o-user-select: none !important;
+  user-select: none !important;
+  -webkit-transition: all .2s !important;
+  -o-transition: all .2s !important;
+  transition: all .2s !important;
+  height: auto !important; 
+  text-shadow: none;
+  font-family: inherit;
+  box-shadow: none;
 }
 
 .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open .dropdown-toggle.btn-info {
-  color: #fff;
-  background-color: #9D357A;
-  border-color: #9b0767;
-  outline: none;
+  color: #fff !important;
+  background-color: #9D357A !important;
+  border-color: #9b0767 !important;
+  outline: none !important;
+  box-shadow: none;
 }
 
 @-moz-keyframes rotate {
