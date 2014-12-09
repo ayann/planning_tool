@@ -8,3 +8,4 @@
 planning_index:
   path:   /
   defaults:  { _controller: PlanningBundle:Planning:index }
+

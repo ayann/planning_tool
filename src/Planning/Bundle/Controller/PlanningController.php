@@ -12,4 +12,16 @@ class PlanningController extends Controller
             '1' => 'x'
         ));
     }
+    
+    public function getViewPlanningByDateAction($dateStart=null,$dateEnd=null)
+    {
+        $value = array();
+         return $this->render('PlanningBundle:Planning:viewPlanning.html.twig', $value);
+    }
+    
+    public function GetDataPlanningByDate($dateStart=null,$dateEnd=null)
+    {
+        $value = array();
+        return json_encode($value);
+    }
 }
