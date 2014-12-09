@@ -1,151 +1,45 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-    <div id="wrapper">
+  {{ include('PlanningBundle::navbar.html.twig') }} 
 
-    <!--USER PANEL-->
-
-    <div id="usr-panel" data-modal="#usr-mod #mod-home">
-      <div class="av-overlay"></div>
-      <img src="img/avatars/nick.jpg" id="usr-av">
-      <div id="usr-info">
-        <span>EDIT</span>
-      </div>
-    </div>
-
-    <!--NAVIGATION-->
-
-    <div id="nav">
-      <ul>
-        <li class="active"><span class="icon">H</span>Dashboard</li>
-        <!--
-        <li><a href="inputs.html"></a><span class="icon">F</span>Inputs</li>
-        <li><a href="extras.html"></a><span class="icon">S</span>Extras</li>
-        <li><a href="grid.html"></a><span class="icon">N</span>Grid</li>
-        -->
-        <li><a href="#"></a><span class="icon">)</span>Stenting</li>
-        <li id="logout"><a href="{{ path('fos_user_security_logout') }}"></a><span class="icon icon-grad">B</span>{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</li>
-      </ul>
-      <br class="clear">
-    </div>
-
-    <div id="content" class="dashboard-page"><!--BEGIN MAIN CONTENT-->
-        
-        <!--GESTION DES MESSAGES D'ERREURS-->
-        {% for type, messages in app.session.flashbag.all() %}
-            {% for message in messages %}
-                <div class="flash-{{ type }}">
-                    {{ message }}
+   <main>
+        <div class="container-fluid">
+            <div class="sidebar">
+                <div class="sidebar_head">
+                    <p>NAVIGATION</p>
                 </div>
-            {% endfor %}
-        {% endfor %}
-        <!-- END GESTION DES MESSAGES D'ERREURS-->
-        
-      <br class="clear">
-      {% block content %}
-      {% endblock content %}
-      <br class="clear">
-      
-    </div><!--END MAIN CONTENT-->
 
-    <!--MODAL WINDOWS-->
-
-    <div id="modal-ov">
-      <div class="modal" id="usr-mod">
-        <div class="mod-ttl"><h2>USER CONTROL PANEL</h2></div>
-        <div class="mod-body">
-          <div id="mod-home" class="nav-item show">
-            <div class="av-overlay"></div>
-            <img src="img/avatars/nick.jpg">
-            <ul id="usr-det">
-              <li><p><span>Name: </span>{# {{ dump(app) }} #}</p></li>
-              <li><p><span>Role: </span>System Administrator</p></li>
-              <li><p><span>Contact: </span>nick@haldeninc.com</p></li>
-              <li><p><span>Member since: </span>12.06.2010</p></li>
-            </ul>
-          </div>
-         
-          <div id="mod-set" class="nav-item">
-              
-            <button class="g8">Change Password</button>
-            <button class="g8 last">Change Email</button>
-            
-            <div class="g8 cont">
-              <input type="checkbox" class="chbox tgcls g4" data-tgcls="#wrapper hz-nav">
-              <div class="label g12 last"><span>Horizontal navigation</span></div>
+                <div class="sidebar_content">
+                    <ul>
+                        <li class="active"><a href=""><i class="fa fa-desktop"></i> Tableau de bord</a></li>
+                        <li><a href=""><i class="fa fa-group"></i> Gestion des promos</a></li>
+                        <li><a href=""><i class="fa fa-calendar"></i> Gestion des plannings</a></li>
+                        <li><a href=""><i class="fa fa-cube"></i> Gestions des Salles</a></li>
+                        <li><a href=""><i class="fa fa-home"></i> Gestion des Etablissements</a></li>
+                        <li><a href=""><i class="fa fa-youtube-play"></i> Gestion des soutenances</a></li>
+                    </ul>
+                </div>
             </div>
-            
-          </div>
+
+            <div class="main right">
+                <div class="main_head">
+                    <div class="bull"></div>
+                    <p class="location">
+                        <i class="fa fa-terminal"></i>
+                        {% block localisation %}
+                        {% endblock %}
+                    </p>
+                    <p class="ariane text-right"> 
+                        {% block ariane %}
+                        {% endblock %}
+                    </p>
+                </div>
+                <div class="main_content">
+                    {% block main_content %}
+                    {% endblock %}
+                </div>
+            </div>
         </div>
-        <div class="mod-act">
-          <ul class="mod-nav">
-            <li class="sel" data-nav="#mod-home"><span class="icon">H</span></li>
-            <li data-nav="#mod-set"><span class="icon">U</span></li>
-          </ul>
-          <button class="orange close">Close</button>
-        </div>
-      </div>
-    </div>
-
-  </div><!--END WRAPPER-->
-
-  <span id="load">
-    <img src="img/load.png"><img src="img/spinner.png" id="spinner">
-  </span>
-
-
+    </main>
 {% endblock body %}
-
-{% block javascripts %}
-<script type='text/javascript'>
-     // LOAD FUNCTIONS
-
-    $.fn.loadfns( function() {
-      $('#ind-cont #nbill').removeClass('init');
-      if ($('#ind-cont').width() < 500) $('#ind-cont').find('.pie-desc').addClass('overlay');
-      $(window).resize( function() {
-        if ($('body').children('#toast-container').length < 1)
-          toastr.info('If content goes out of place when resizing, just hit refresh');
-      });
-    });
-
-
-   
-    
-
-    // FLUID LAYOUT
-
-    var docWidth = $(document).width();
-    if (docWidth < 1699 && docWidth > 1499) {
-      $('#content')
-        .children('#tb-box').removeClass('g7').addClass('g6');
-    } else if (docWidth < 1700 && docWidth > 1300) {
-      $('#content')
-        .children('#stats-cont').removeClass('g2').addClass('g4')
-        .siblings('#users-cont').removeClass('g4').addClass('g6')
-        .siblings('#chart-box').removeClass('row1').addClass('row2').insertAfter('#recent-conv');
-    } else if (docWidth < 1300 && docWidth > 1063) {
-      $('#content')
-        .children('#stats-cont').removeClass('g2').addClass('g3')
-        .siblings('#bk-mng').removeClass('g4').addClass('g7')
-        .siblings('#users-cont').removeClass('g4').addClass('g6').insertAfter('#bk-mng')
-        .siblings('#chart-box').removeClass('row1').addClass('row2').insertAfter('#users-cont')
-        .siblings('#todo-list').removeClass('g5').addClass('g7').insertAfter('#chart-box')
-        .siblings('#recent-conv').removeClass('g5').addClass('g9').insertAfter('#chart-box')
-        .siblings('#support-tickets').removeClass('g6').addClass('g10').insertAfter('#users-cont')
-        .siblings('#tb-box').insertAfter('#ind-cont');
-    } else if (docWidth < 1064 && docWidth > 799) {
-      $('#content')
-        .children('#ind-cont').insertAfter('#cal-box')
-        .siblings('#tb-box').insertAfter('#ind-cont')
-        .siblings('#chart-box').insertAfter('#users-cont').removeClass('row1').addClass('row2');
-    } else if (docWidth < 817) {
-      $('#content')
-        .children('#bk-mng').insertAfter('#stats-cont');
-    };
-    if (docWidth < 1081 && docWidth > 1064) {
-      $('#content')
-        .children('#chart-box').removeClass('row2').addClass('row1').insertAfter('#users-cont')
-    };
-</script>   
-{% endblock %}
