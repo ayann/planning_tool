@@ -9,3 +9,4 @@
 /app/cache/prod/*
 /app/logs/*.log
 /app/config/parameters.yml
+/nbproject/private/
