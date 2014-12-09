@@ -6,33 +6,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <title>{% block title %}Welcome!{% endblock %}</title>
+        
         {% block stylesheets %}{% endblock %}
+
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />        
         
          <!---CSS Files-->
-        <link rel="stylesheet" href="{{ asset('bundles/template/css/core.css') }}">
-        <link rel="stylesheet" href="{{ asset('bundles/template/css/style.css') }}">
-        <link rel="stylesheet" href="{{ asset('bundles/template/css/bootstrap.min.css') }}">
-        <!---jQuery Files-->
-        <script src="{{ asset('bundles/template/js/jquery.js') }}"  type="text/javascript"></script>
-        <script src="{{ asset('bundles/template/js/jquery-ui.js') }}"  type="text/javascript"></script>
-        <script src="{{ asset('bundles/template/js/inputs.js') }}"  type="text/javascript"></script>
-        <script src="{{ asset('bundles/template/js/flot.js') }}"  type="text/javascript"></script>
-        <script src="{{ asset('bundles/template/js/functions.js') }}"  type="text/javascript"></script>
-        <!---fullcalendar Files-->
-        <link href="{{ asset('bundles/fullcalendar/fullcalendar.css') }}" rel='stylesheet' />
-        <link href="{{ asset('bundles/fullcalendar/fullcalendar.print.css') }}" rel='stylesheet' media='print' />
-        <script src="{{ asset('bundles/fullcalendar/lib/moment.min.js') }}"></script>
-        <script src="{{ asset('bundles/fullcalendar/lib/jquery.min.js') }}"></script>
-        <script src="{{ asset('bundles/fullcalendar/fullcalendar.min.js') }}"></script>
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/layouts/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/layouts/css/bootstrap-theme.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/layouts/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/layouts/css/annimate.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/layouts/css/main.css') }}">
+
+        <!---jQuery Files-->        
+        <script src="{{ asset('bundles/layouts/js/jquery.min.js') }}"></script>
+        
+        <!-- Bootstrap JavaScript -->
+        <script src="{{ asset('bundles/layouts/js/bootstrap.min.js') }}"></script>
+        
+        <!-- Application JavaScript -->
+        <script src="{{ asset('bundles/layouts/js/main.js') }}"></script>
         
     </head>
     <body>
         {% block body %}{% endblock %}
-        <script type='text/javascript'>
-            
-                {% block javascripts %}{% endblock %}
-	});
-        </script>
+        
+        {% block javascripts %}{% endblock %}
     </body>
 </html>

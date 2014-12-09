@@ -54,7 +54,7 @@ html,body{
 
 }
 
-.avatar{
+.logo{
   line-height: 85px;
   width: 100px;height: 100px;
   margin: 10px auto 30px;
@@ -64,13 +64,13 @@ html,body{
   text-align: center;
 }
 
-.avatar img{
+.logo img{
   width: 80%;
   margin: 0 auto;
   cursor: pointer;
 }
 
-.avatar img:hover{
+.logo img:hover{
   -webkit-animation: rotate infinite; /* Chrome, Safari, Opera */
   animation: rotate infinite;
 }

@@ -1,0 +1,56 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,100);
+html, body { height: 100%; }
+
+body { background-color: #2C3E50; font-family: 'Roboto', sans-serif; font-weight: 100; }
+
+.fa { margin-right: 10px; }
+
+.right { float: right; }
+
+header { margin-bottom: 50px; }
+header nav { background-color: #1BBC9B !important; background-image: none !important; }
+header nav .container-fluid { border-bottom: 3px solid #158f76; }
+header nav .container-fluid .navbar-brand { padding-top: 10px; }
+header nav .container-fluid .navbar-brand img { height: 25px; }
+header nav .container-fluid #rigth_menu { margin-right: 20px; }
+header nav .container-fluid .open > a, header nav .container-fluid .open > a:hover, header nav .container-fluid .open > a:focus { background-color: #158f76 !important; }
+header nav .container-fluid .open > a, header nav .container-fluid .active > a { background-image: none !important; }
+header nav .container-fluid .dropdown-toggle { padding-top: 8px; padding-bottom: 9px; }
+header nav .container-fluid .dropdown-toggle img { border-radius: 50%; }
+header nav .container-fluid .avatar-name, header nav .container-fluid .caret { color: #fff !important; }
+header nav .container-fluid .avatar-name { font-weight: normal; text-shadow: none; }
+header nav .container-fluid .dropdown { height: 51px; line-height: 50px; }
+header nav .container-fluid .dropdown .dropdown-menu { margin-top: 10px; border: 2px solid #1BBC9B !important; padding: 10px; }
+header nav .container-fluid .dropdown .dropdown-menu li a { margin-bottom: 10px; padding: 10px; transition: all .3s; font-size: 1.2em; }
+header nav .container-fluid .dropdown .dropdown-menu li a:hover { background-color: #1BBC9B !important; background-image: none !important; color: #fff; }
+header nav .container-fluid .navbar-nav li { transition: all .3s; }
+header nav .container-fluid .navbar-nav li:hover { background-color: #158f76 !important; box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.075); }
+header nav .container-fluid .navbar-nav li a.other { font-size: 1.4em; color: #fff; }
+header .navbar { border: none; }
+
+main { height: 100%; }
+main .container-fluid { height: 100%; padding: 0; }
+main .container-fluid .sidebar { width: 20%; position: fixed; left: 0; height: 400px; color: #fff; }
+main .container-fluid .sidebar .sidebar_head { border-bottom: 1px solid #3e5771; }
+main .container-fluid .sidebar .sidebar_head p { margin: 0; }
+main .container-fluid .sidebar .sidebar_content, main .container-fluid .sidebar .sidebar_head { padding: 15px; }
+main .container-fluid .sidebar .sidebar_content ul { padding: 0; }
+main .container-fluid .sidebar .sidebar_content ul li { transition: all .3s; border-radius: 2px; list-style: none; margin-bottom: 5px; }
+main .container-fluid .sidebar .sidebar_content ul li a { display: block; padding: 10px; text-decoration: none; color: #fff; }
+main .container-fluid .sidebar .sidebar_content ul li a:hover .fa { color: #1BBC9B; }
+main .container-fluid .sidebar .sidebar_content ul li:hover { background-color: #3e5771; }
+main .container-fluid .sidebar .sidebar_content ul li.active { background-color: #1BBC9B; }
+main .container-fluid .sidebar .sidebar_content ul li.active a .fa { color: #fff !important; }
+main .container-fluid .main { width: 80%; height: 100%; }
+main .container-fluid .main .main_head, main .container-fluid .main .main_content { padding: 15px; }
+main .container-fluid .main .main_head { background-color: #E7E5E1; border-bottom: 1px solid #fff; padding-left: 20px; }
+main .container-fluid .main .main_head .bull { width: 30px; height: 30px; border-radius: 50%; background-color: #E7E5E1; position: fixed; top: 62px; margin-left: -35px; transition: all .2s; }
+main .container-fluid .main .main_head .location, main .container-fluid .main .main_head .ariane { display: inline-block; width: 48%; }
+main .container-fluid .main .main_head .location { font-weight: bold; }
+main .container-fluid .main .main_head .location .fa { font-size: 1.3em; }
+main .container-fluid .main .main_head .ariane .active a { color: #1BBC9B; margin-right: 10px; }
+main .container-fluid .main .main_content { background-color: #F2F1EF; overflow-y: scroll; height: 100%; padding: 20px 30px; }
+
+p { margin: 0; }
+
+.bull_grey { background-color: #F2F1EF !important; }
