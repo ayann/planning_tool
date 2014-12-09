@@ -9,3 +9,7 @@ planning_index:
   path:   /
   defaults:  { _controller: PlanningBundle:Planning:index }
 
+planning_establishments:
+  path:   /etablissements
+  defaults:  { _controller: PlanningBundle:Planning:establishments }
+

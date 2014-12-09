@@ -24,4 +24,9 @@ class PlanningController extends Controller
         $value = array();
         return json_encode($value);
     }
+
+    public function establishmentsAction()
+    {
+        return $this->render('PlanningBundle:Planning:establishments.html.twig');
+    }
 }

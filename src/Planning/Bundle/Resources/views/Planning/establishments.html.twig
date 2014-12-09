@@ -1,0 +1,12 @@
+{% extends 'PlanningBundle::layout.html.twig' %}
+{% block localisation %}
+    Gestion des établissements
+{% endblock %}
+
+{% block ariane %}
+    <span class="active"><i class="fa fa-home"></i><a href="">Home</a></span>/ Gestion des établissements
+{% endblock %}
+
+{% block main_content %}
+    {{app.request.attributes.get('_route')}}
+{% endblock main_content %}

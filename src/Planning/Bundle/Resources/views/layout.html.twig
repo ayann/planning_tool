@@ -12,11 +12,11 @@
 
                 <div class="sidebar_content">
                     <ul>
-                        <li class="active"><a href=""><i class="fa fa-desktop"></i> Tableau de bord</a></li>
+                        <li class="{{ app.request.attributes.get('_route') == 'planning_index' ? 'active' : '' }}"><a href="{{ path('planning_index') }}"><i class="fa fa-desktop"></i> Tableau de bord</a></li>
                         <li><a href=""><i class="fa fa-group"></i> Gestion des promos</a></li>
                         <li><a href=""><i class="fa fa-calendar"></i> Gestion des plannings</a></li>
                         <li><a href=""><i class="fa fa-cube"></i> Gestions des Salles</a></li>
-                        <li><a href=""><i class="fa fa-home"></i> Gestion des Etablissements</a></li>
+                        <li class="{{ app.request.attributes.get('_route') == 'planning_establishments' ? 'active' : '' }}"><a href="{{ path('planning_establishments') }}"><i class="fa fa-home"></i> Gestion des Etablissements</a></li>
                         <li><a href=""><i class="fa fa-youtube-play"></i> Gestion des soutenances</a></li>
                     </ul>
                 </div>
