@@ -54,11 +54,7 @@ html,body{
 
 }
 
-<<<<<<< HEAD
-.avatar{
-=======
 .logo{
->>>>>>> d9bb111722d8b103827819a0c4c5164447ec3381
   line-height: 85px;
   width: 100px;height: 100px;
   margin: 10px auto 30px;
@@ -68,21 +64,13 @@ html,body{
   text-align: center;
 }
 
-<<<<<<< HEAD
-.avatar img{
-=======
 .logo img{
->>>>>>> d9bb111722d8b103827819a0c4c5164447ec3381
   width: 80%;
   margin: 0 auto;
   cursor: pointer;
 }
 
-<<<<<<< HEAD
-.avatar img:hover{
-=======
 .logo img:hover{
->>>>>>> d9bb111722d8b103827819a0c4c5164447ec3381
   -webkit-animation: rotate infinite; /* Chrome, Safari, Opera */
   animation: rotate infinite;
 }
