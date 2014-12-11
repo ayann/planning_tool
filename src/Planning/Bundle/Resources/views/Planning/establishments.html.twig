@@ -8,5 +8,111 @@
 {% endblock %}
 
 {% block main_content %}
-    {{app.request.attributes.get('_route')}}
+    <div class="row">
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+            <div class="well">
+              
+            </div>
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="left_side_block">
+                <a data-toggle="modal" href='#add_modal'>
+                    <div class="block_content">
+                        <i class="fa fa-plus"></i>
+                    </div>
+                    <div class="block_footer">
+                        Ajouter
+                    </div>
+                </a>
+            </div>
+            <div class="left_side_block">
+                <a href="">
+                    <div class="block_content">
+                        <i class="fa fa-trash"></i>
+                    </div>
+                    <div class="block_footer">
+                        Supprimer
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        {% if form is defined %}
+            <div class="modal animated flipInX" id="add_modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Ajouter un établissement</h4>
+                        </div>
+                        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                            <div class="modal-body">
+                                <div class="well">
+
+                                    {{ form_errors(form) }}
+
+                                    <div class="form-group">
+                                        {{ form_label(form.address, "Adresse de l'établissement", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                                        {{ form_errors(form.address) }}
+
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.address, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ form_label(form.phone, "Numéro de téléphone", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                                        {{ form_errors(form.phone) }}
+
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.phone, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ form_label(form.email, "Adresse email", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                                        {{ form_errors(form.email) }}
+
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ form_label(form.subwayLine, "Ligne de metro", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                                        {{ form_errors(form.subwayLine) }}
+
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.subwayLine, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        {{ form_label(form.accessPlan, "Plan d'accès", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+                                        {{ form_errors(form.accessPlan) }}
+
+                                        <div class="col-sm-9">
+                                            {{ form_widget(form.accessPlan, {'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary btn-green', 'value': 'Ajouter'}}) }}
+                            </div>
+                            {{ form_rest(form) }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
 {% endblock main_content %}

@@ -50,7 +50,20 @@ main .container-fluid .main .main_head .location { font-weight: bold; }
 main .container-fluid .main .main_head .location .fa { font-size: 1.3em; }
 main .container-fluid .main .main_head .ariane .active a { color: #1BBC9B; margin-right: 10px; }
 main .container-fluid .main .main_content { background-color: #F2F1EF; overflow-y: scroll; height: 100%; padding: 20px 30px; }
+main .container-fluid .main .main_content .left_side_block { display: inline-block; width: 40%; margin-right: 20px; border-top: 2px solid #E7E5E1; }
+main .container-fluid .main .main_content .left_side_block a { display: block; width: 100%; height: 100%; color: #000; }
+main .container-fluid .main .main_content .left_side_block a .block_content { padding: 10px; background-color: #fff; text-align: center; }
+main .container-fluid .main .main_content .left_side_block a .block_content .fa { font-size: 2em; margin: 0; }
+main .container-fluid .main .main_content .left_side_block a .block_footer { background-color: #E7E5E1; padding: 5px 10px; text-align: center; font-weight: bold; font-size: 13px; }
+main .container-fluid .main .main_content .left_side_block a:hover { text-decoration: none; color: #1BBC9B; }
 
 p { margin: 0; }
 
 .bull_grey { background-color: #F2F1EF !important; }
+
+.modal-content, .well, input, .btn { border-radius: 0 !important; }
+
+.well { margin-bottom: 0 !important; }
+
+.btn-green { background-image: none !important; background-color: #1BBC9B !important; border-color: #18a689 !important; transition: all .3s; }
+.btn-green:hover { background-color: #18a689 !important; }
