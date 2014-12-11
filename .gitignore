@@ -10,3 +10,6 @@
 /app/logs/*.log
 /app/config/parameters.yml
 /nbproject/*
+*/.DS_Store
+.DS_Store
+.DS_Store?
