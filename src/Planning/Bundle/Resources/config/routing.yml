@@ -9,3 +9,22 @@ planning_index:
   path:   /
   defaults:  { _controller: PlanningBundle:Planning:index }
 
+planning_management:
+  path:   /planning
+  defaults:  { _controller: PlanningBundle:Planning:index }
+
+planning_promo:
+  path:   /promo
+  defaults:  { _controller: PlanningBundle:Promo:view }
+  
+planning_getAjaxSource:
+  path:   /getAjaxSource
+  defaults:  { _controller: PlanningBundle:Promo:getAjaxSource }
+  
+planning_classroom:
+  path:   /classroom
+  defaults:  { _controller: PlanningBundle:Classroom:index }
+  
+planning_establishment:
+  path:   /establishment
+  defaults:  { _controller: PlanningBundle:Establishment:index }

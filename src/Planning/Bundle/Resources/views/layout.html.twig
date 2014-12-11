@@ -12,12 +12,11 @@
 
                 <div class="sidebar_content">
                     <ul>
-                        <li class="active"><a href=""><i class="fa fa-desktop"></i> Tableau de bord</a></li>
-                        <li><a href=""><i class="fa fa-group"></i> Gestion des promos</a></li>
-                        <li><a href=""><i class="fa fa-calendar"></i> Gestion des plannings</a></li>
-                        <li><a href=""><i class="fa fa-cube"></i> Gestions des Salles</a></li>
-                        <li><a href=""><i class="fa fa-home"></i> Gestion des Etablissements</a></li>
-                        <li><a href=""><i class="fa fa-youtube-play"></i> Gestion des soutenances</a></li>
+                        <li class="active"><a href="{{ path('planning_index') }}"><i class="fa fa-desktop"></i> Tableau de bord</a></li>
+                        <li><a href="{{ path('planning_promo') }}"><i class="fa fa-group"></i> Gestion des promos</a></li>
+                        <li><a href="{{ path('planning_management') }}"><i class="fa fa-calendar"></i> Gestion des plannings</a></li>
+                        <li><a href="{{ path('planning_classroom') }}"><i class="fa fa-cube"></i> Gestions des Salles</a></li>
+                        <li><a href="{{ path('planning_establishment') }}"><i class="fa fa-home"></i> Gestion des Etablissements</a></li>
                     </ul>
                 </div>
             </div>
@@ -43,3 +42,7 @@
         </div>
     </main>
 {% endblock body %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
