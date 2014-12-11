@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Courses
  *
  * @ORM\Table(name="courses")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PlanningBundle\entity\CoursesRepository")
  */
 class Courses
 {
@@ -29,4 +29,37 @@ class Courses
     private $name;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Courses
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 }

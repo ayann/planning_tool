@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Promos
  *
  * @ORM\Table(name="promos")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PlanningBundle\entity\PromosRepository")
  */
 class Promos
 {
@@ -29,4 +29,37 @@ class Promos
     private $number;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set number
+     *
+     * @param string $number
+     * @return Promos
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+    
+        return $this;
+    }
+
+    /**
+     * Get number
+     *
+     * @return string 
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
 }

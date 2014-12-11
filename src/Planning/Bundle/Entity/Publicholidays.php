@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Publicholidays
  *
  * @ORM\Table(name="publicholidays")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PlanningBundle\entity\PublicholidaysRepository")
  */
 class Publicholidays
 {
@@ -29,4 +29,37 @@ class Publicholidays
     private $date;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Publicholidays
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
 }

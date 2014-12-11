@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Classrooms
  *
- * @ORM\Table(name="classrooms", indexes={@ORM\Index(name="fk_class_rooms_establishments1_idx", columns={"establishments_id"})})
- * @ORM\Entity
+ * @ORM\Table(name="classrooms")
+ * @ORM\Entity(repositoryClass="PlanningBundle\entity\ClassroomsRepository")
  */
 class Classrooms
 {
@@ -50,4 +50,106 @@ class Classrooms
     private $establishmentsId;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set numberOfComputer
+     *
+     * @param integer $numberOfComputer
+     * @return Classrooms
+     */
+    public function setNumberOfComputer($numberOfComputer)
+    {
+        $this->numberOfComputer = $numberOfComputer;
+    
+        return $this;
+    }
+
+    /**
+     * Get numberOfComputer
+     *
+     * @return integer 
+     */
+    public function getNumberOfComputer()
+    {
+        return $this->numberOfComputer;
+    }
+
+    /**
+     * Set numberOfClass
+     *
+     * @param string $numberOfClass
+     * @return Classrooms
+     */
+    public function setNumberOfClass($numberOfClass)
+    {
+        $this->numberOfClass = $numberOfClass;
+    
+        return $this;
+    }
+
+    /**
+     * Get numberOfClass
+     *
+     * @return string 
+     */
+    public function getNumberOfClass()
+    {
+        return $this->numberOfClass;
+    }
+
+    /**
+     * Set capacityOfClass
+     *
+     * @param integer $capacityOfClass
+     * @return Classrooms
+     */
+    public function setCapacityOfClass($capacityOfClass)
+    {
+        $this->capacityOfClass = $capacityOfClass;
+    
+        return $this;
+    }
+
+    /**
+     * Get capacityOfClass
+     *
+     * @return integer 
+     */
+    public function getCapacityOfClass()
+    {
+        return $this->capacityOfClass;
+    }
+
+    /**
+     * Set establishmentsId
+     *
+     * @param integer $establishmentsId
+     * @return Classrooms
+     */
+    public function setEstablishmentsId($establishmentsId)
+    {
+        $this->establishmentsId = $establishmentsId;
+    
+        return $this;
+    }
+
+    /**
+     * Get establishmentsId
+     *
+     * @return integer 
+     */
+    public function getEstablishmentsId()
+    {
+        return $this->establishmentsId;
+    }
 }
