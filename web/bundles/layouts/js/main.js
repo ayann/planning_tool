@@ -8,4 +8,11 @@ jQuery(document).ready(function($) {
             $cible.removeClass('bull_grey')
         };
     });
+
+    $('.plan').each(function(index, el) {
+        $(this).click(function(event) {
+            planlink = $(this).data('planlink')
+            $('#map').attr('src', planlink);
+        });
+    });
 });

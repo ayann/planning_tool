@@ -20,7 +20,6 @@ class EstablishmentsType extends AbstractType
             ->add('phone',      'text')
             ->add('email',      'email')
             ->add('subwayLine', 'text')
-            ->add('accessPlan', 'text')
             ->add('save',      'submit')
         ;
     }

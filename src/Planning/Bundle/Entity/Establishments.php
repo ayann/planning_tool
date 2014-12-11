@@ -49,13 +49,6 @@ class Establishments
      */
     private $subwayLine;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="accessPlan", type="string", length=255)
-     */
-    private $accessPlan;
-
 
     /**
      * Get id
@@ -159,26 +152,4 @@ class Establishments
         return $this->subwayLine;
     }
 
-    /**
-     * Set accessPlan
-     *
-     * @param string $accessPlan
-     * @return Establishments
-     */
-    public function setAccessPlan($accessPlan)
-    {
-        $this->accessPlan = $accessPlan;
-
-        return $this;
-    }
-
-    /**
-     * Get accessPlan
-     *
-     * @return string 
-     */
-    public function getAccessPlan()
-    {
-        return $this->accessPlan;
-    }
 }
