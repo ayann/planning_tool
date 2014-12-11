@@ -20,14 +20,12 @@ class PlanningController extends Controller
         return $this->render('PlanningBundle:Planning:viewPlanning.html.twig', $value);
     }
     
-    public function GetDataPlanningByDate($dateStart=null,$dateEnd=null)
-    {
+    public function GetDataPlanningByDate($dateStart=null,$dateEnd=null){
         $value = array();
         return json_encode($value);
     }
 
-    public function establishmentsAction(Request $request)
-    {
+    public function establishmentsAction(Request $request){
         $establishments = new Establishments;
         $form = $this->createForm(new EstablishmentsType(), $establishments);
 
@@ -57,5 +55,21 @@ class PlanningController extends Controller
                 )
             );
         }
+    }
+
+    public function deleteEstablishmentAction($id, Request $request){
+
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('PlanningBundle:Establishments');
+
+        $establishment = $repository->find($id);
+
+        if (null === $establishment) {
+            $request->getSession()->getFlashBag()->add('notice', "L'établissement d'id ".$id." n'existe pas.");
+        }else{
+            $em->remove($establishment);
+            $em->flush();
+        }
+        return $this->redirect($this->generateUrl('planning_establishments'));
     }
 }
