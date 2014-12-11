@@ -31,6 +31,14 @@ class PlanningController extends Controller
         $establishments = new Establishments;
         $form = $this->createForm(new EstablishmentsType(), $establishments);
 
+        $repository = $this
+          ->getDoctrine()
+          ->getManager()
+          ->getRepository('PlanningBundle:Establishments')
+        ;
+
+        $listEstablishments = $repository->findAll();
+
         if ($request->isMethod('POST')) {
             if ($form->handleRequest($request)->isValid()) {
                 $em = $this->getDoctrine()->getManager();
@@ -42,7 +50,12 @@ class PlanningController extends Controller
                 return $this->redirect($this->generateUrl('planning_establishments'));
             }
         }else{
-            return $this->render('PlanningBundle:Planning:establishments.html.twig', array('form' => $form->createView()));
+            return $this->render('PlanningBundle:Planning:establishments.html.twig', 
+                array(
+                    'form' => $form->createView(),
+                    'listEstablishments' => $listEstablishments
+                )
+            );
         }
     }
 }

@@ -11,9 +11,25 @@
     <div class="row">
         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
             <div class="well">
-              
+                {% if listEstablishments|length > 0 %}
+                    {% for establishment in listEstablishments %}
+                        <p>{{ establishment.address }}</p>
+
+                        <p>{{ establishment.phone }}</p>
+
+                        <p>{{ establishment.email }}</p>
+
+                        <p>{{ establishment.subwayline }}</p>
+
+                        <p>{{ establishment.accessplan }}</p>
+                        <hr>
+                    {% endfor %}
+                {% else %}
+                    <p class="text-center">Aucun établissement renseigné</p>
+                {% endif %}
             </div>
         </div>
+
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
             <div class="left_side_block">
                 <a data-toggle="modal" href='#add_modal'>
@@ -36,6 +52,7 @@
                 </a>
             </div>
         </div>
+
     </div>
 
     <div class="row">
