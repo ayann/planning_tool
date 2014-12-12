@@ -28,22 +28,19 @@ class PlanningController extends Controller
     public function establishmentsAction(Request $request){
         $establishments = new Establishments;
         $form = $this->createForm(new EstablishmentsType(), $establishments);
+        
+        $em = $this->getDoctrine()->getManager(); // Entity manager
 
-        $repository = $this
-          ->getDoctrine()
-          ->getManager()
-          ->getRepository('PlanningBundle:Establishments')
-        ;
+        $repository = $em->getRepository('PlanningBundle:Establishments'); // Repository
 
         $listEstablishments = $repository->findAll();
 
         if ($request->isMethod('POST')) {
             if ($form->handleRequest($request)->isValid()) {
-                $em = $this->getDoctrine()->getManager();
                 $em->persist($establishments);
                 $em->flush();
 
-                $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
+                $request->getSession()->getFlashBag()->add('notice', 'Établissement bien enregistrée.');
 
                 return $this->redirect($this->generateUrl('planning_establishments'));
             }
@@ -65,11 +62,41 @@ class PlanningController extends Controller
         $establishment = $repository->find($id);
 
         if (null === $establishment) {
-            $request->getSession()->getFlashBag()->add('notice', "L'établissement d'id ".$id." n'existe pas.");
+            $request->getSession()->getFlashBag()->add('alert', "L'établissement d'id ".$id." n'existe pas.");
         }else{
             $em->remove($establishment);
             $em->flush();
         }
         return $this->redirect($this->generateUrl('planning_establishments'));
+    }
+
+    public function editEstablishmentAction($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('PlanningBundle:Establishments');
+
+        $establishment = $repository->find($id);
+        $listEstablishments = $repository->findAll();
+        
+        $form = $this->createForm(new EstablishmentsType(), $establishment);
+
+        if (null === $establishment) {
+            $request->getSession()->getFlashBag()->add('alert', "L'établissement d'id ".$id." n'existe pas.");
+            return $this->redirect($this->generateUrl('planning_establishments'));
+        }else{
+            if ($request->isMethod('POST')) {
+                if ($form->handleRequest($request)->isValid()) {
+                    $em->flush();
+                    $request->getSession()->getFlashBag()->add('notice', 'Établissement bien modifié.');
+                    return $this->redirect($this->generateUrl('planning_establishments'));
+                }
+            }else{
+                return $this->render('PlanningBundle:Planning:establishment_edit.html.twig', 
+                    array(
+                        'form' => $form->createView(),
+                    )
+                );
+            }
+        }
     }
 }

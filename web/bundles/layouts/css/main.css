@@ -68,7 +68,7 @@ p { margin: 0; }
 .btn-green { background-image: none !important; background-color: #1BBC9B !important; border-color: #18a689 !important; transition: all .3s; }
 .btn-green:hover { background-color: #18a689 !important; }
 
-.white_well { background-color: #fff; background-image: none !important; border-top: 3px solid #dcd9d3; }
+.white_well { background-color: #fff !important; background-image: none !important; border-top: 3px solid #dcd9d3 !important; }
 
 th { font-size: 12px; }
 
@@ -87,3 +87,16 @@ a.plan { color: #2C3E50; }
 .dataTables_paginate a { display: inline-block; background-color: #1BBC9B; cursor: pointer; margin-right: 10px; text-align: center; color: #fff; width: 20px; height: 20px; line-height: 20px; }
 .dataTables_paginate a .fa { font-size: 1.3em; margin: 0 !important; }
 .dataTables_paginate a:hover { background-color: #158f76; }
+
+.center-box { float: none; display: block; margin: 0 auto; }
+
+.well { overflow: hidden !important; }
+
+.btn-edit { float: right; }
+
+.alert-danger { background-image: none !important; background-color: #D5412B; border-color: #D5412B; color: #fff; }
+
+.alert-success { background-image: none !important; background-color: #1BBC9B; border-color: #1BBC9B; color: #fff; }
+
+.alert .close { color: #fff; opacity: .7; }
+.alert .close:hover { color: #000; }
