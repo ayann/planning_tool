@@ -28,10 +28,10 @@
                                 <tr>
                                     <td>{{ course.name }}</td>
                                     
-                                    <td class="text-center"><a href="{{ path('planning_edit_establishment', { 'id': course.id }) }}" class="edit" title="Modifier"><i class="fa fa-pencil-square-o"></i>  Modifier</a></td>
+                                    <td class="text-center"><a href="{{ path('planning_edit_course', { 'id': course.id }) }}" class="edit" title="Modifier"><i class="fa fa-pencil-square-o"></i>  Modifier</a></td>
 
                                     <td class="text-center">
-                                        <a onclick="return confirm('Êtes vous sûr de le supprimer?')" href="{{ path('planning_delete_establishment', { 'id': course.id }) }}" class="remove" title="Supprimer">
+                                        <a onclick="return confirm('Êtes vous sûr de le supprimer?')" href="{{ path('planning_delete_course', { 'id': course.id }) }}" class="remove" title="Supprimer">
                                             <i class="fa fa-trash"></i> Supprimer
                                         </a>
                                     </td>
@@ -72,18 +72,10 @@
                         {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
                             <div class="modal-body">
                                 <div class="well">
-                                    {{ form_errors(form) }}
-                                    <div class="form-group">
-                                        {{ form_label(form.name, "Nom du module", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-
-                                        {{ form_errors(form.name) }}
-
-                                        <div class="col-sm-9">
-                                            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
-                                        </div>
-                                    </div>
+                                    {{ include('PlanningBundle:Courses:form.html.twig') }} 
                                 </div>
                             </div>
+
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                                 {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary btn-green'}, 'label': 'Créer' }) }}
@@ -96,17 +88,3 @@
         {% endif %}
     </div>
 {% endblock main_content %}
-
-{% block javascripts %}
-    {{parent()}}
-    <script type="text/javascript">
-        jQuery(document).ready(function($) {
-            $('#table_id').DataTable({
-                "oLanguage": {
-                    "sUrl": "bundles/layouts/js/datatables_french.json"
-                }
-            });
-        });
-    </script>
-{% endblock %}
-

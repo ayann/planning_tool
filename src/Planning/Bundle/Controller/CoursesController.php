@@ -33,4 +33,48 @@
                 );
             }
         }
+
+        public function editAction($id, Request $request){
+            $em = $this->getDoctrine()->getManager();
+            $repository = $em->getRepository('PlanningBundle:Courses');
+
+            $course = $repository->find($id);
+            
+            $form = $this->createForm(new CoursesType(), $course);
+
+            if (null === $course) {
+                $request->getSession()->getFlashBag()->add('alert', "Le module d'id ".$id." n'existe pas.");
+                return $this->redirect($this->generateUrl('planning_courses'));
+            }else{
+                if ($request->isMethod('POST')) {
+                    if ($form->handleRequest($request)->isValid()) {
+                        $em->flush();
+
+                        $request->getSession()->getFlashBag()->add('notice', 'Le module a bien été modifié.');
+                        return $this->redirect($this->generateUrl('planning_courses'));
+                    }
+                }else{
+                    return $this->render('PlanningBundle:Courses:edit.html.twig', 
+                        array(
+                            'form' => $form->createView(),
+                        )
+                    );
+                }
+            }
+        }
+
+        public function deleteAction($id, Request $request){
+            $em = $this->getDoctrine()->getManager();
+            $repository = $em->getRepository('PlanningBundle:Courses');
+
+            $course = $repository->find($id);
+
+            if (null === $course) {
+                $request->getSession()->getFlashBag()->add('alert', "Le module d'id ".$id." n'existe pas.");
+            }else{
+                $em->remove($course);
+                $em->flush();
+            }
+            return $this->redirect($this->generateUrl('planning_courses'));
+        }
     }
