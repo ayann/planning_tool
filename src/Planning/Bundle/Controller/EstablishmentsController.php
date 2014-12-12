@@ -22,12 +22,12 @@
                     $em->persist($establishments);
                     $em->flush();
 
-                    $request->getSession()->getFlashBag()->add('notice', 'Établissement bien enregistrée.');
+                    $request->getSession()->getFlashBag()->add('notice', 'Établissement bien enregistré.');
 
                     return $this->redirect($this->generateUrl('planning_establishments'));
                 }
             }else{
-                return $this->render('PlanningBundle:Planning:establishments.html.twig', 
+                return $this->render('PlanningBundle:Establishments:index.html.twig', 
                     array(
                         'form' => $form->createView(),
                         'listEstablishments' => $listEstablishments
@@ -71,7 +71,7 @@
                         return $this->redirect($this->generateUrl('planning_establishments'));
                     }
                 }else{
-                    return $this->render('PlanningBundle:Planning:establishment_edit.html.twig', 
+                    return $this->render('PlanningBundle:Establishments:edit.html.twig', 
                         array(
                             'form' => $form->createView(),
                         )

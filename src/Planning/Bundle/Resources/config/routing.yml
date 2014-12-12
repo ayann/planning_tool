@@ -2,15 +2,11 @@ planning_index:
     path:   /
     defaults:  { _controller: PlanningBundle:Planning:index }
 
+# establishments routes
+
 planning_establishments:
     path:   /etablissements
     defaults:  { _controller: PlanningBundle:Establishments:index }
-
-planning_delete_establishment:
-    path:   /etablissements/{id}/delete
-    defaults:  { _controller: PlanningBundle:Establishments:delete }
-    requirements:
-        id: \d+
 
 planning_edit_establishment:
     path:   /etablissements/{id}/edit
@@ -18,8 +14,26 @@ planning_edit_establishment:
     requirements:
         id: \d+
 
+planning_delete_establishment:
+    path:   /etablissements/{id}/delete
+    defaults:  { _controller: PlanningBundle:Establishments:delete }
+    requirements:
+        id: \d+
+
+# courses routes
+
 planning_courses:
     path:   /cours
-    defaults:  { _controller: PlanningBundle:Coures:index }
+    defaults:  { _controller: PlanningBundle:Courses:index }
+
+planning_edit_course:
+    path:   /cours/{id}/edit
+    defaults:  { _controller: PlanningBundle:Courses:edit }
+    requirements:
+        id: \d+
+
+planning_delete_course:
+    path:   /cours/{id}/delete
+    defaults:  { _controller: PlanningBundle:Courses:delete }
     requirements:
         id: \d+

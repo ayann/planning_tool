@@ -7,27 +7,26 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Courses
  *
- * @ORM\Table(name="courses")
- * @ORM\Entity(repositoryClass="PlanningBundle\entity\CoursesRepository")
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Planning\Bundle\Entity\CoursesRepository")
  */
 class Courses
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=45, nullable=true)
+     * @ORM\Column(name="name", type="string", length=40)
      */
     private $name;
-
 
 
     /**
@@ -49,7 +48,7 @@ class Courses
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 

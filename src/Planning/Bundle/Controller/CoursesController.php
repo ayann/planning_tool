@@ -8,75 +8,29 @@
     
     class CoursesController extends Controller{
         public function indexAction(Request $request){
-            $establishments = new Establishments;
-            $form = $this->createForm(new EstablishmentsType(), $establishments);
+            $course = new Courses;
+            $form = $this->createForm(new CoursesType(), $course);
             
             $em = $this->getDoctrine()->getManager(); // Entity manager
 
-            $repository = $em->getRepository('PlanningBundle:Establishments'); // Repository
-
-            $listEstablishments = $repository->findAll();
+            $repository = $em->getRepository('PlanningBundle:Courses'); // Repository
+            $courses = $repository->findAll();
 
             if ($request->isMethod('POST')) {
                 if ($form->handleRequest($request)->isValid()) {
-                    $em->persist($establishments);
+                    $em->persist($course);
                     $em->flush();
 
-                    $request->getSession()->getFlashBag()->add('notice', 'Établissement bien enregistrée.');
-
-                    return $this->redirect($this->generateUrl('planning_establishments'));
+                    $request->getSession()->getFlashBag()->add('notice', 'Cours bien enregistré.');
+                    return $this->redirect($this->generateUrl('planning_courses'));
                 }
             }else{
-                return $this->render('PlanningBundle:Planning:establishments.html.twig', 
+                return $this->render('PlanningBundle:Courses:index.html.twig', 
                     array(
                         'form' => $form->createView(),
-                        'listEstablishments' => $listEstablishments
+                        'courses' => $courses
                     )
                 );
-            }
-        }
-
-        public function deleteAction($id, Request $request){
-            $em = $this->getDoctrine()->getManager();
-            $repository = $em->getRepository('PlanningBundle:Establishments');
-
-            $establishment = $repository->find($id);
-
-            if (null === $establishment) {
-                $request->getSession()->getFlashBag()->add('alert', "L'établissement d'id ".$id." n'existe pas.");
-            }else{
-                $em->remove($establishment);
-                $em->flush();
-            }
-            return $this->redirect($this->generateUrl('planning_establishments'));
-        }
-
-        public function editAction($id, Request $request){
-            $em = $this->getDoctrine()->getManager();
-            $repository = $em->getRepository('PlanningBundle:Establishments');
-
-            $establishment = $repository->find($id);
-            $listEstablishments = $repository->findAll();
-            
-            $form = $this->createForm(new EstablishmentsType(), $establishment);
-
-            if (null === $establishment) {
-                $request->getSession()->getFlashBag()->add('alert', "L'établissement d'id ".$id." n'existe pas.");
-                return $this->redirect($this->generateUrl('planning_establishments'));
-            }else{
-                if ($request->isMethod('POST')) {
-                    if ($form->handleRequest($request)->isValid()) {
-                        $em->flush();
-                        $request->getSession()->getFlashBag()->add('notice', 'Établissement bien modifié.');
-                        return $this->redirect($this->generateUrl('planning_establishments'));
-                    }
-                }else{
-                    return $this->render('PlanningBundle:Planning:establishment_edit.html.twig', 
-                        array(
-                            'form' => $form->createView(),
-                        )
-                    );
-                }
             }
         }
     }
