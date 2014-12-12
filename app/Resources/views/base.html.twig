@@ -12,6 +12,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />        
         
          <!---CSS Files-->
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.4/css/jquery.dataTables.css">
 
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/layouts/css/bootstrap.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/layouts/css/bootstrap-theme.min.css') }}">
@@ -27,7 +28,10 @@
         
         <!-- Application JavaScript -->
         <script src="{{ asset('bundles/layouts/js/main.js') }}"></script>
-        
+
+        <!-- DataTables JavaScript -->
+        <script src="{{ asset('bundles/layouts/js/datatables.js') }}"></script>
+
     </head>
     <body>
         {% block body %}{% endblock %}

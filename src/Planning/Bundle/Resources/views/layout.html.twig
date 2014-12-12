@@ -20,7 +20,7 @@
                         <li><a href=""><i class="fa fa-group"></i> Gestion des promos</a></li>
                         <li><a href=""><i class="fa fa-calendar"></i> Gestion des plannings</a></li>
                         <li><a href=""><i class="fa fa-cube"></i> Gestions des Salles</a></li>
-                        <li class="{{ 'planning_establishments'|activeLink }}">
+                        <li class="{{ 'planning_establishments'|activeLink }} {{ 'planning_edit_establishment'|activeLink }}">
                             <a href="{{ path('planning_establishments') }}">
                                 <i class="fa fa-home"></i> Gestion des Etablissements
                             </a>
@@ -44,6 +44,12 @@
                     </p>
                 </div>
                 <div class="main_content">
+                    <div class="row animated zoomIn">
+                        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                            {{ include('PlanningBundle::flash_message.html.twig') }} 
+                        </div>                        
+                    </div>
+
                     {% block main_content %}
                     {% endblock %}
                 </div>
@@ -51,3 +57,4 @@
         </div>
     </main>
 {% endblock body %}
+

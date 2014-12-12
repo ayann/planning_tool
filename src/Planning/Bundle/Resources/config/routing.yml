@@ -6,10 +6,21 @@
 
 
 planning_index:
-  path:   /
-  defaults:  { _controller: PlanningBundle:Planning:index }
+    path:   /
+    defaults:  { _controller: PlanningBundle:Planning:index }
 
 planning_establishments:
-  path:   /etablissements
-  defaults:  { _controller: PlanningBundle:Planning:establishments }
+    path:   /etablissements
+    defaults:  { _controller: PlanningBundle:Planning:establishments }
 
+planning_delete_establishment:
+    path:   /etablissements/{id}/delete
+    defaults:  { _controller: PlanningBundle:Planning:deleteEstablishment }
+    requirements:
+        id: \d+
+
+planning_edit_establishment:
+    path:   /etablissements/{id}/edit
+    defaults:  { _controller: PlanningBundle:Planning:editEstablishment }
+    requirements:
+        id: \d+
