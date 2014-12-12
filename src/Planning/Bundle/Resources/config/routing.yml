@@ -1,26 +1,25 @@
-# blog:
-#   path:   /blog/{page}
-#   defaults:  { _controller: AcmeBlogBundle:Blog:index, page: 1 }
-#   requirements:
-#     page:  \d+
-
-
 planning_index:
     path:   /
     defaults:  { _controller: PlanningBundle:Planning:index }
 
 planning_establishments:
     path:   /etablissements
-    defaults:  { _controller: PlanningBundle:Planning:establishments }
+    defaults:  { _controller: PlanningBundle:Establishments:index }
 
 planning_delete_establishment:
     path:   /etablissements/{id}/delete
-    defaults:  { _controller: PlanningBundle:Planning:deleteEstablishment }
+    defaults:  { _controller: PlanningBundle:Establishments:delete }
     requirements:
         id: \d+
 
 planning_edit_establishment:
     path:   /etablissements/{id}/edit
-    defaults:  { _controller: PlanningBundle:Planning:editEstablishment }
+    defaults:  { _controller: PlanningBundle:Establishments:edit }
+    requirements:
+        id: \d+
+
+planning_courses:
+    path:   /cours
+    defaults:  { _controller: PlanningBundle:Coures:index }
     requirements:
         id: \d+
