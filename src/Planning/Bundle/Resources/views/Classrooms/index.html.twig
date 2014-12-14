@@ -1,0 +1,96 @@
+{% extends 'PlanningBundle::layout.html.twig' %}
+
+{% block title %}Insta | Gestion des salles{% endblock %}
+
+{% block localisation %}
+    Gestion des salles
+{% endblock %}
+
+{% block ariane %}
+    <span class="active"><i class="fa fa-home"></i><a href="">Home</a></span>/ Gestion des salles
+{% endblock %}
+
+{% block main_content %}
+    <div class="row">
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="well white_well animated zoomIn">
+                {% if classrooms|length > 0 %}
+                    <table class="row-border" id="table_id">
+                        <thead>
+                            <tr>
+                                <th>Établissement</th>
+                                <th>Numéro de la salle</th>
+                                <th>Capacité de la salle</th>
+                                <th>Nombre d'ordinateur de la salle</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for classroom in classrooms %}
+                                <tr>
+                                    <td>{{ classroom.establishment }}</td>
+                                    <td>{{ classroom.number }}</td>
+                                    <td>{{ classroom.capacity }}</td>
+                                    <td>{{ classroom.numberOfComputer }}</td>
+                                    <td class="text-center"><a href="{{ path('classroom_edit', { 'id': classroom.id }) }}" class="edit" title="Modifier"><i class="fa fa-pencil-square-o"></i>  Modifier</a></td>
+
+                                    <td class="text-center">
+                                        <a onclick="return confirm('Êtes vous sûr de le supprimer?')" href="{{ path('classroom_delete', { 'id': classroom.id }) }}" class="remove" title="Supprimer">
+                                            <i class="fa fa-trash"></i> Supprimer
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="text-center">Aucun module renseigné</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <div class="left_side_block">
+                <a data-toggle="modal" href='#add_modal'>
+                    <div class="block_content">
+                        <i class="fa fa-plus"></i>
+                    </div>
+                    <div class="block_footer">
+                        Ajouter
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        {% if form is defined %}
+            <div class="modal animated flipInX" id="add_modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Renseigné un module</h4>
+                        </div>
+                        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                            <div class="modal-body">
+                                <div class="well">
+                                    {{ include('PlanningBundle:Classrooms:form.html.twig') }} 
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary btn-green'}, 'label': 'Créer' }) }}
+                            </div>
+                            {{ form_rest(form) }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock main_content %}

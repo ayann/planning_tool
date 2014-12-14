@@ -49,6 +49,18 @@ class Establishments
      */
     private $subwayLine;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=60)
+     */
+    private $name;
+
+    /**
+    * @ORM\OneToMany(targetEntity="Classrooms", mappedBy="establishment", cascade={"remove", "persist"})
+    */
+    private $classrooms;
+
 
     /**
      * Get id
@@ -150,5 +162,73 @@ class Establishments
     public function getSubwayLine()
     {
         return $this->subwayLine;
+    }
+
+    public function __toString()
+    {
+        return $this->name." | ".$this->address;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Establishments
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->classrooms = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add classrooms
+     *
+     * @param \Planning\Bundle\Entity\Classrooms $classrooms
+     * @return Establishments
+     */
+    public function addClassroom(\Planning\Bundle\Entity\Classrooms $classrooms)
+    {
+        $this->classrooms[] = $classrooms;
+
+        return $this;
+    }
+
+    /**
+     * Remove classrooms
+     *
+     * @param \Planning\Bundle\Entity\Classrooms $classrooms
+     */
+    public function removeClassroom(\Planning\Bundle\Entity\Classrooms $classrooms)
+    {
+        $this->classrooms->removeElement($classrooms);
+    }
+
+    /**
+     * Get classrooms
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getClassrooms()
+    {
+        return $this->classrooms;
     }
 }

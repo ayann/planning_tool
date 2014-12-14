@@ -37,3 +37,21 @@ planning_delete_course:
     defaults:  { _controller: PlanningBundle:Courses:delete }
     requirements:
         id: \d+
+
+#classrooms routes
+
+classrooms:
+    path:   /salles
+    defaults:  { _controller: PlanningBundle:Classrooms:index }
+
+classroom_edit:
+    path:   /salle/{id}/edit
+    defaults:  { _controller: PlanningBundle:Classrooms:edit }
+    requirements:
+        id: \d+
+
+classroom_delete:
+    path:   /salle/{id}/delete
+    defaults:  { _controller: PlanningBundle:Classrooms:delete }
+    requirements:
+        id: \d+

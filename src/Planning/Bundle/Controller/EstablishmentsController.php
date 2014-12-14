@@ -36,21 +36,6 @@
             }
         }
 
-        public function deleteAction($id, Request $request){
-            $em = $this->getDoctrine()->getManager();
-            $repository = $em->getRepository('PlanningBundle:Establishments');
-
-            $establishment = $repository->find($id);
-
-            if (null === $establishment) {
-                $request->getSession()->getFlashBag()->add('alert', "L'établissement d'id ".$id." n'existe pas.");
-            }else{
-                $em->remove($establishment);
-                $em->flush();
-            }
-            return $this->redirect($this->generateUrl('planning_establishments'));
-        }
-
         public function editAction($id, Request $request){
             $em = $this->getDoctrine()->getManager();
             $repository = $em->getRepository('PlanningBundle:Establishments');
@@ -78,5 +63,20 @@
                     );
                 }
             }
+        }
+
+        public function deleteAction($id, Request $request){
+            $em = $this->getDoctrine()->getManager();
+            $repository = $em->getRepository('PlanningBundle:Establishments');
+
+            $establishment = $repository->find($id);
+
+            if (null === $establishment) {
+                $request->getSession()->getFlashBag()->add('alert', "L'établissement d'id ".$id." n'existe pas.");
+            }else{
+                $em->remove($establishment);
+                $em->flush();
+            }
+            return $this->redirect($this->generateUrl('planning_establishments'));
         }
     }

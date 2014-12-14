@@ -18,6 +18,7 @@
                     <table class="row-border" id="table_id">
                         <thead>
                             <tr>
+                                <th>Nom</th>
                                 <th>Adresse</th>
                                 <th>Téléphone</th>
                                 <th>Email</th>
@@ -30,6 +31,8 @@
                         <tbody>
                             {% for establishment in listEstablishments %}
                                 <tr>
+                                    <td>{{ establishment.name }}</td>
+                                    
                                     <td>{{ establishment.address }}</td>
 
                                     <td>{{ establishment.phone }}</td>

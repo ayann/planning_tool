@@ -7,49 +7,46 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Classrooms
  *
- * @ORM\Table(name="classrooms")
- * @ORM\Entity(repositoryClass="PlanningBundle\entity\ClassroomsRepository")
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Planning\Bundle\Entity\ClassroomsRepository")
  */
 class Classrooms
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="number_of_computer", type="integer", nullable=true)
+     * @ORM\Column(name="number", type="integer")
+     */
+    private $number;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="capacity", type="integer")
+     */
+    private $capacity;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="number_of_computer", type="integer")
      */
     private $numberOfComputer;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="number_of_class", type="string", length=45, nullable=true)
-     */
-    private $numberOfClass;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="capacity_of_class", type="integer", nullable=true)
-     */
-    private $capacityOfClass;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="establishments_id", type="integer", nullable=false)
-     */
-    private $establishmentsId;
-
-
+       * @ORM\ManyToOne(targetEntity="Establishments", inversedBy="classrooms", cascade={"persist"})
+       * @ORM\JoinColumn(nullable=false)
+       */
+    private $establishment;
 
     /**
      * Get id
@@ -62,6 +59,52 @@ class Classrooms
     }
 
     /**
+     * Set number
+     *
+     * @param integer $number
+     * @return Classrooms
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+
+        return $this;
+    }
+
+    /**
+     * Get number
+     *
+     * @return integer 
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * Set capacity
+     *
+     * @param integer $capacity
+     * @return Classrooms
+     */
+    public function setCapacity($capacity)
+    {
+        $this->capacity = $capacity;
+
+        return $this;
+    }
+
+    /**
+     * Get capacity
+     *
+     * @return integer 
+     */
+    public function getCapacity()
+    {
+        return $this->capacity;
+    }
+
+    /**
      * Set numberOfComputer
      *
      * @param integer $numberOfComputer
@@ -70,7 +113,7 @@ class Classrooms
     public function setNumberOfComputer($numberOfComputer)
     {
         $this->numberOfComputer = $numberOfComputer;
-    
+
         return $this;
     }
 
@@ -85,71 +128,25 @@ class Classrooms
     }
 
     /**
-     * Set numberOfClass
+     * Set establishment
      *
-     * @param string $numberOfClass
+     * @param \Planning\Bundle\Entity\Establishments $establishment
      * @return Classrooms
      */
-    public function setNumberOfClass($numberOfClass)
+    public function setEstablishment(\Planning\Bundle\Entity\Establishments $establishment)
     {
-        $this->numberOfClass = $numberOfClass;
-    
+        $this->establishment = $establishment;
+
         return $this;
     }
 
     /**
-     * Get numberOfClass
+     * Get establishment
      *
-     * @return string 
+     * @return \Planning\Bundle\Entity\Establishments 
      */
-    public function getNumberOfClass()
+    public function getEstablishment()
     {
-        return $this->numberOfClass;
-    }
-
-    /**
-     * Set capacityOfClass
-     *
-     * @param integer $capacityOfClass
-     * @return Classrooms
-     */
-    public function setCapacityOfClass($capacityOfClass)
-    {
-        $this->capacityOfClass = $capacityOfClass;
-    
-        return $this;
-    }
-
-    /**
-     * Get capacityOfClass
-     *
-     * @return integer 
-     */
-    public function getCapacityOfClass()
-    {
-        return $this->capacityOfClass;
-    }
-
-    /**
-     * Set establishmentsId
-     *
-     * @param integer $establishmentsId
-     * @return Classrooms
-     */
-    public function setEstablishmentsId($establishmentsId)
-    {
-        $this->establishmentsId = $establishmentsId;
-    
-        return $this;
-    }
-
-    /**
-     * Get establishmentsId
-     *
-     * @return integer 
-     */
-    public function getEstablishmentsId()
-    {
-        return $this->establishmentsId;
+        return $this->establishment;
     }
 }

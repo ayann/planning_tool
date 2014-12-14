@@ -1,0 +1,40 @@
+{{ form_errors(form) }}
+<div class="form-group">
+    {{ form_label(form.establishment, "Établissement", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+
+    {{ form_errors(form.establishment) }}
+
+    <div class="col-sm-8">
+        {{ form_widget(form.establishment, {'attr': {'class': 'form-control', 'required':'required'}}) }}
+    </div>
+</div>
+
+<div class="form-group">
+    {{ form_label(form.number, "Numéro de la salle", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+
+    {{ form_errors(form.number) }}
+
+    <div class="col-sm-8">
+        {{ form_widget(form.number, {'attr': {'class': 'form-control', 'min':1 }}) }}
+    </div>
+</div>
+
+<div class="form-group">
+    {{ form_label(form.capacity, "Capacité de la salle", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+
+    {{ form_errors(form.capacity) }}
+
+    <div class="col-sm-8">
+        {{ form_widget(form.capacity, {'attr': {'class': 'form-control', 'min':1 }}) }}
+    </div>
+</div>
+
+<div class="form-group">
+    {{ form_label(form.numberOfComputer, "Nombre d'ordinateur de la salle", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+
+    {{ form_errors(form.numberOfComputer) }}
+
+    <div class="col-sm-8">
+        {{ form_widget(form.numberOfComputer, {'attr': {'class': 'form-control', 'min':1 }}) }}
+    </div>
+</div>

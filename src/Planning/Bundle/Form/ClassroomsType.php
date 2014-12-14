@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class EstablishmentsType extends AbstractType
+class ClassroomsType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,11 +15,10 @@ class EstablishmentsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('address')
-            ->add('phone')
-            ->add('email')
-            ->add('subwayLine')
-            ->add('name')
+            ->add('number')
+            ->add('capacity')
+            ->add('numberOfComputer')
+            ->add('establishment')
             ->add('save',   'submit')
         ;
     }
@@ -30,7 +29,7 @@ class EstablishmentsType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Planning\Bundle\Entity\Establishments'
+            'data_class' => 'Planning\Bundle\Entity\Classrooms'
         ));
     }
 
@@ -39,6 +38,6 @@ class EstablishmentsType extends AbstractType
      */
     public function getName()
     {
-        return 'planning_bundle_establishments';
+        return 'planning_bundle_classrooms';
     }
 }
