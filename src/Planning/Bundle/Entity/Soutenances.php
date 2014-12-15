@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Soutenances
  *
- * @ORM\Table(name="soutenances", indexes={@ORM\Index(name="fk_soutenances_classrooms1_idx", columns={"classrooms_id"})})
- * @ORM\Entity
+ * @ORM\Table(name="soutenances")
+ * @ORM\Entity(repositoryClass="PlanningBundle\Entity\SoutenancesRepository")
  */
 class Soutenances
 {

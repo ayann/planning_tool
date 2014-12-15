@@ -1,0 +1,69 @@
+{% extends 'PlanningBundle::layout.html.twig' %}
+
+{% block main_content %}
+
+<a href="{{ path('planning_promo_add') }}">
+    add promo
+</a>
+
+
+    <table id="tabPromo" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Nom</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tfoot>
+            <tr>
+                <th>id</th>
+                <th>Nom</th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+
+{% endblock main_content %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+
+        $(document).ready(function() {
+            
+            $('#tabPromo').dataTable({
+                "processing": true,
+                "serverSide": true,
+                "columns": [
+                    { 'name': 'id' },
+                    { 'name': 'name' },
+                    { 'name': '' }
+                ],
+                "columnDefs": [ 
+                    {
+                        "targets": 2,
+                        "data": "download_link",
+                        "orderable": false,
+                        "render": function ( data, type, full, meta ) 
+                        {
+                          var route = Routing.generate('planning_promo_edit', { id: full[0] });;
+                          return '<a href="'+route+'">Edit</a>';
+                        }
+                    }
+                ],
+                "ajax": {
+                    "url": "{{ path('planning_promo_getAjaxSource') }}",
+                    "dataType": "json"
+                }
+            });
+        });
+
+    </script> 
+
+
+
+{% endblock %}
+   

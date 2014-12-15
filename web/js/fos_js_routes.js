@@ -1,0 +1,1 @@
+fos.Router.setData({"base_url":"","routes":{"planning_editpromo":{"tokens":[["variable","\/","[^\/]++","id"],["text","\/editpromo"]],"defaults":[],"requirements":[],"hosttokens":[]}},"prefix":"","host":"localhost","scheme":"http"});

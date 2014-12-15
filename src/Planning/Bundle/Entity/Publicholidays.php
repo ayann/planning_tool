@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Publicholidays
  *
  * @ORM\Table(name="publicholidays")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PlanningBundle\Entity\PublicholidaysRepository")
  */
 class Publicholidays
 {

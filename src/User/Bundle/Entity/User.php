@@ -16,10 +16,27 @@
          * @ORM\GeneratedValue(strategy="AUTO")
          */
         protected $id;
+        
+       /**
+        * @var \Promo
+        *
+        * @ORM\ManyToOne(targetEntity="Planning\Bundle\Entity\Promo")
+        * @ORM\JoinColumns({
+        *   @ORM\JoinColumn(name="promo_id", referencedColumnName="id")
+        * })
+        */
+       protected $promo;
+       
+       /**
+        * @var string
+        *
+        * @ORM\Column(name="isValid", type="integer", nullable=true)
+        */
+       private $isValid;
 
         public function __construct()
         {
             parent::__construct();
-            // your own logic
+            $this->isValid(true);
         }
     }

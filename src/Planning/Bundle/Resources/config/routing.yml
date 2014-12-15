@@ -4,6 +4,8 @@
 #   requirements:
 #     page:  \d+
 
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
 planning_index:
   path:   /
@@ -13,14 +15,6 @@ planning_management:
   path:   /planning
   defaults:  { _controller: PlanningBundle:Planning:index }
 
-planning_promo:
-  path:   /promo
-  defaults:  { _controller: PlanningBundle:Promo:view }
-  
-planning_getAjaxSource:
-  path:   /getAjaxSource
-  defaults:  { _controller: PlanningBundle:Promo:getAjaxSource }
-  
 planning_classroom:
   path:   /classroom
   defaults:  { _controller: PlanningBundle:Classroom:index }
@@ -28,3 +22,28 @@ planning_classroom:
 planning_establishment:
   path:   /establishment
   defaults:  { _controller: PlanningBundle:Establishment:index }
+
+
+
+#############################################################################
+#########################      PromoController      #########################
+#############################################################################
+
+planning_promo:
+  path:   /promo
+  defaults:  { _controller: PlanningBundle:Promo:view }
+  
+planning_promo_add:
+  path:   /addpromo
+  defaults:  { _controller: PlanningBundle:Promo:add }
+  
+planning_promo_edit:
+  path:   /editpromo/{id}
+  defaults:  { _controller: PlanningBundle:Promo:edit }
+  options:
+        expose: true
+        
+planning_promo_getAjaxSource:
+  path:   /getAjaxSource
+  defaults:  { _controller: PlanningBundle:Promo:getAjaxSource }
+  
