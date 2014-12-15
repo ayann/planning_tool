@@ -7,34 +7,33 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Holidays
  *
- * @ORM\Table(name="holidays")
- * @ORM\Entity(repositoryClass="PlanningBundle\entity\HolidaysRepository")
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Planning\Bundle\Entity\HolidaysRepository")
  */
 class Holidays
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="start", type="date", nullable=true)
+     * @ORM\Column(name="start", type="date")
      */
     private $start;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="end", type="date", nullable=true)
+     * @ORM\Column(name="end", type="date")
      */
     private $end;
-
 
 
     /**
@@ -56,7 +55,7 @@ class Holidays
     public function setStart($start)
     {
         $this->start = $start;
-    
+
         return $this;
     }
 
@@ -79,7 +78,7 @@ class Holidays
     public function setEnd($end)
     {
         $this->end = $end;
-    
+
         return $this;
     }
 

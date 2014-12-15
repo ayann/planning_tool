@@ -73,3 +73,21 @@ publicholiday_delete:
     defaults:  { _controller: PlanningBundle:PublicHolidays:delete }
     requirements:
         id: \d+
+
+#Public Holidays routes
+
+holidays:
+    path:   /vacances-scolaires
+    defaults:  { _controller: PlanningBundle:Holidays:index }
+
+holiday_edit:
+    path:   /vacances-scolaires/{id}/edit
+    defaults:  { _controller: PlanningBundle:Holidays:edit }
+    requirements:
+        id: \d+
+
+holiday_delete:
+    path:   /vacances-scolaires/{id}/delete
+    defaults:  { _controller: PlanningBundle:Holidays:delete }
+    requirements:
+        id: \d+

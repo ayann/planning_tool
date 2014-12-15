@@ -20,7 +20,9 @@
 
                         <li><a href=""><i class="fa fa-calendar"></i> Gestion des plannings</a></li>
 
-                        <li><a href=""><i class="fa fa-youtube-play"></i> Gestion des vacances</a></li>
+                        <li class="{{ 'holidays'|activeLink }} {{ 'holiday_edit'|activeLink }}">
+                            <a href="{{ path('holidays') }}"><i class="fa fa-clock-o"></i> Gestion des vacances</a>
+                        </li>
 
                         <li class="{{ 'publicholidays'|activeLink }} {{ 'publicholiday_edit'|activeLink }}">
                             <a href="{{ path('publicholidays') }}"><i class="fa fa-calendar-o"></i>Gestion des jours fériés</a>
