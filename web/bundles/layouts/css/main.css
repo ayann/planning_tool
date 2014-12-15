@@ -100,3 +100,18 @@ a.plan { color: #2C3E50; }
 
 .alert .close { color: #fff; opacity: .7; }
 .alert .close:hover { color: #000; }
+
+.errors{
+    margin-top: 5px;
+}
+
+.errors ul{
+    width: 60%;
+    float: right;
+    margin-top: 5px;
+}
+.errors ul li{
+    list-style: none;
+    color: #D5412B;
+    font-size: 12px;
+}

@@ -18,8 +18,8 @@ class ClassroomsType extends AbstractType
             ->add('number')
             ->add('capacity')
             ->add('numberOfComputer')
-            ->add('establishment')
-            ->add('save',   'submit')
+            ->add('establishment', null, array('empty_value' => 'Choisissez un établissement'))
+            ->add('save', 'submit')
         ;
     }
     

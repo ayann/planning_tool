@@ -13,7 +13,19 @@
 {% block main_content %}
     <div class="row">
         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            {% if form_errors(form.start) or form_errors(form.end) %}
+                <div class="alert animated shake alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <p>{{ form_errors(form.start) }}</p>
+                    <p>{{ form_errors(form.end) }}</p>
+                </div>
+            {% endif %}
             <div class="well white_well animated zoomIn">
+                
+
                 {% if holidays|length > 0 %}
                     <table class="row-border" id="table_id">
                         <thead>

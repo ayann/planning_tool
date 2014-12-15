@@ -2,6 +2,9 @@
 
 namespace Planning\Bundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\ExecutionContextInterface;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -90,5 +93,22 @@ class Holidays
     public function getEnd()
     {
         return $this->end;
+    }
+
+    /**
+    * @Assert\Callback
+    */
+    public function validate(ExecutionContextInterface $context){
+        $start_date =   $this->getStart();
+        $end_date   =   $this->getEnd();
+         
+        if($start_date->format("dd/mm/yy") >= $end_date->format("dd/mm/yy")){
+            $context->addViolationAt(
+                'end',
+                'Erreur! la date de fin est inférieure à la date de début',
+                array(),
+                null
+            );
+        }
     }
 }

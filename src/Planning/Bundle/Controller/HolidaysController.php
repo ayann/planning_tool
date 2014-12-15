@@ -26,14 +26,14 @@
                     $request->getSession()->getFlashBag()->add('notice', 'Le jour férié a bien été enregistré.');
                     return $this->redirect($this->generateUrl('holidays'));
                 }
-            }else{
-                return $this->render('PlanningBundle:Holidays:index.html.twig', 
-                    array(
-                        'form' => $form->createView(),
-                        'holidays' => $holidays
-                    )
-                );
             }
+
+            return $this->render('PlanningBundle:Holidays:index.html.twig', 
+                array(
+                    'form' => $form->createView(),
+                    'holidays' => $holidays
+                )
+            );
         }
 
 
@@ -48,22 +48,22 @@
             if (!$holiday) {
                 $request->getSession()->getFlashBag()->add('alert', "Le jour férié d'id  $id n'existe pas.");
                 return $this->redirect($this->generateUrl('holidays'));
-            }else{
-                if ($request->isMethod('POST')) {
-                    if ($form->handleRequest($request)->isValid()) {
-                        $em->flush();
+            }
 
-                        $request->getSession()->getFlashBag()->add('notice', 'Le jour férié a bien été modifié.');
-                        return $this->redirect($this->generateUrl('holidays'));
-                    }
-                }else{
-                    return $this->render('PlanningBundle:Holidays:edit.html.twig', 
-                        array(
-                            'form' => $form->createView(),
-                        )
-                    );
+            if ($request->isMethod('POST')) {
+                if ($form->handleRequest($request)->isValid()) {
+                    $em->flush();
+
+                    $request->getSession()->getFlashBag()->add('notice', 'Le jour férié a bien été modifié.');
+                    return $this->redirect($this->generateUrl('holidays'));
                 }
             }
+
+            return $this->render('PlanningBundle:Holidays:edit.html.twig', 
+                array(
+                    'form' => $form->createView(),
+                )
+            );
         }
 
 
