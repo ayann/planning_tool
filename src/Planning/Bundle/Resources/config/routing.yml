@@ -55,3 +55,21 @@ classroom_delete:
     defaults:  { _controller: PlanningBundle:Classrooms:delete }
     requirements:
         id: \d+
+
+#Public Holidays routes
+
+publicholidays:
+    path:   /jour-feries
+    defaults:  { _controller: PlanningBundle:PublicHolidays:index }
+
+publicholiday_edit:
+    path:   /jour-ferie/{id}/edit
+    defaults:  { _controller: PlanningBundle:PublicHolidays:edit }
+    requirements:
+        id: \d+
+
+publicholiday_delete:
+    path:   /jour-ferie/{id}/delete
+    defaults:  { _controller: PlanningBundle:PublicHolidays:delete }
+    requirements:
+        id: \d+
