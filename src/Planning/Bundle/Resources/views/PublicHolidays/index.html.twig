@@ -26,7 +26,7 @@
                         <tbody>
                             {% for publicholiday in publicholidays %}
                                 <tr>
-                                    <td>{{ publicholiday.date|date("d/m/Y") }}</td>
+                                    <td>{{ publicholiday.date|date("D/M/Y") }}</td>
                                     <td class="text-center"><a href="{{ path('publicholiday_edit', { 'id': publicholiday.id }) }}" class="edit" title="Modifier"><i class="fa fa-pencil-square-o"></i>  Modifier</a></td>
 
                                     <td class="text-center">

@@ -20,6 +20,12 @@
 
                         <li><a href=""><i class="fa fa-calendar"></i> Gestion des plannings</a></li>
 
+                        <li><a href=""><i class="fa fa-youtube-play"></i> Gestion des vacances</a></li>
+
+                        <li class="{{ 'publicholidays'|activeLink }} {{ 'publicholiday_edit'|activeLink }}">
+                            <a href="{{ path('publicholidays') }}"><i class="fa fa-calendar-o"></i>Gestion des jours fériés</a>
+                        </li>
+
                         <li class="{{ 'classrooms'|activeLink }} {{ 'classroom_edit'|activeLink }}">
                             <a href="{{ path('classrooms') }}"><i class="fa fa-cube"></i> Gestions des Salles</a>
                         </li>
@@ -36,9 +42,6 @@
 
                         <li><a href=""><i class="fa fa-youtube-play"></i> Gestion des soutenances</a></li>
 
-                        <li><a href=""><i class="fa fa-youtube-play"></i> Gestion des vacances</a></li>
-
-                        <li><a href="{{ path('publicholidays') }}"><i class="fa fa-youtube-play"></i> Gestion des jours fériés</a></li>
                     </ul>
                 </div>
             </div>
