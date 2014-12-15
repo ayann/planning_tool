@@ -5,29 +5,28 @@ namespace Planning\Bundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Publicholidays
+ * PublicHolidays
  *
- * @ORM\Table(name="publicholidays")
- * @ORM\Entity(repositoryClass="PlanningBundle\entity\PublicholidaysRepository")
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Planning\Bundle\Entity\PublicHolidaysRepository")
  */
-class Publicholidays
+class PublicHolidays
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="datetime", nullable=true)
+     * @ORM\Column(name="date", type="date")
      */
     private $date;
-
 
 
     /**
@@ -44,12 +43,12 @@ class Publicholidays
      * Set date
      *
      * @param \DateTime $date
-     * @return Publicholidays
+     * @return PublicHolidays
      */
     public function setDate($date)
     {
         $this->date = $date;
-    
+
         return $this;
     }
 

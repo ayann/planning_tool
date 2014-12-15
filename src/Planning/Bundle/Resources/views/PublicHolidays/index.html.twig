@@ -1,42 +1,36 @@
 {% extends 'PlanningBundle::layout.html.twig' %}
 
-{% block title %}Insta | Gestion des salles{% endblock %}
+{% block title %}Insta | Gestion des jours fériés{% endblock %}
 
 {% block localisation %}
-    Gestion des salles
+    Gestion des jours fériés
 {% endblock %}
 
 {% block ariane %}
-    <span class="active"><i class="fa fa-home"></i><a href="">Home</a></span>/ Gestion des salles
+    <span class="active"><i class="fa fa-home"></i><a href="">Home</a></span>/ Gestion des jours fériés
 {% endblock %}
 
 {% block main_content %}
     <div class="row">
         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
             <div class="well white_well animated zoomIn">
-                {% if classrooms|length > 0 %}
+                {% if publicholidays|length > 0 %}
                     <table class="row-border" id="table_id">
                         <thead>
                             <tr>
-                                <th>Établissement</th>
-                                <th>Numéro de la salle</th>
-                                <th>Capacité de la salle</th>
-                                <th>Nombre d'ordinateur de la salle</th>
+                                <th>Date</th>
                                 <th></th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for classroom in classrooms %}
+                            {% for publicholiday in publicholidays %}
                                 <tr>
-                                    <td>{{ classroom.establishment }}</td>
-                                    <td>{{ classroom.number }}</td>
-                                    <td>{{ classroom.capacity }}</td>
-                                    <td>{{ classroom.numberOfComputer }}</td>
-                                    <td class="text-center"><a href="{{ path('classroom_edit', { 'id': classroom.id }) }}" class="edit" title="Modifier"><i class="fa fa-pencil-square-o"></i>  Modifier</a></td>
+                                    <td>{{ publicholiday.date|date("D/M/Y") }}</td>
+                                    <td class="text-center"><a href="{{ path('publicholiday_edit', { 'id': publicholiday.id }) }}" class="edit" title="Modifier"><i class="fa fa-pencil-square-o"></i>  Modifier</a></td>
 
                                     <td class="text-center">
-                                        <a onclick="return confirm('Êtes vous sûr de le supprimer?')" href="{{ path('classroom_delete', { 'id': classroom.id }) }}" class="remove" title="Supprimer">
+                                        <a onclick="return confirm('Êtes vous sûr de le supprimer?')" href="{{ path('publicholiday_delete', { 'id': publicholiday.id }) }}" class="remove" title="Supprimer">
                                             <i class="fa fa-trash"></i> Supprimer
                                         </a>
                                     </td>
@@ -46,7 +40,7 @@
                         </tbody>
                     </table>
                 {% else %}
-                    <p class="text-center">Aucune salle renseignée</p>
+                    <p class="text-center">Aucun jour férié renseigné</p>
                 {% endif %}
             </div>
         </div>
@@ -73,12 +67,12 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">Renseigné une salle</h4>
+                            <h4 class="modal-title">Renseigné un jour férié</h4>
                         </div>
                         {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
                             <div class="modal-body">
                                 <div class="well">
-                                    {{ include('PlanningBundle:Classrooms:form.html.twig') }} 
+                                    {{ include('PlanningBundle:PublicHolidays:form.html.twig') }} 
                                 </div>
                             </div>
 
