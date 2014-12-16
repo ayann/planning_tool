@@ -12,7 +12,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />        
         
          <!---CSS Files-->
-
+         
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/layouts/css/bootstrap.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/layouts/css/bootstrap-theme.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/layouts/css/font-awesome.min.css') }}">
@@ -27,12 +27,13 @@
         <script src="{{ asset('bundles/datatable/media/js/jquery.dataTables.js') }}"></script>
         <link rel="stylesheet" type="text/css" href="{{ asset('bundles/datatable/media/css/jquery.dataTables.css') }}">
         
+        
         <!-- Bootstrap JavaScript -->
         <script src="{{ asset('bundles/layouts/js/bootstrap.min.js') }}"></script>
         
         <!-- Application JavaScript -->
         <script src="{{ asset('bundles/layouts/js/main.js') }}"></script>
-        
+
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
         
@@ -40,6 +41,16 @@
     <body>
         {% block body %}{% endblock %}
         
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $('#table_id').DataTable({
+                        "oLanguage": {
+                            "sUrl": "bundles/layouts/js/datatables_french.json"
+                        }
+                    });
+                });
+            </script>
+        {% endblock %}
     </body>
 </html>

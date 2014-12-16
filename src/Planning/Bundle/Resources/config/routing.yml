@@ -1,49 +1,118 @@
-# blog:
-#   path:   /blog/{page}
-#   defaults:  { _controller: AcmeBlogBundle:Blog:index, page: 1 }
-#   requirements:
-#     page:  \d+
-
+# incluide routes
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
+
 planning_index:
-  path:   /
-  defaults:  { _controller: PlanningBundle:Planning:index }
+    path:   /
+    defaults:  { _controller: PlanningBundle:Planning:index }
 
-planning_management:
-  path:   /planning
-  defaults:  { _controller: PlanningBundle:Planning:index }
+# establishments routes
 
-planning_classroom:
-  path:   /classroom
-  defaults:  { _controller: PlanningBundle:Classroom:index }
-  
-planning_establishment:
-  path:   /establishment
-  defaults:  { _controller: PlanningBundle:Establishment:index }
+planning_establishments:
+    path:   /etablissements
+    defaults:  { _controller: PlanningBundle:Establishments:index }
 
+planning_edit_establishment:
+    path:   /etablissements/{id}/edit
+    defaults:  { _controller: PlanningBundle:Establishments:edit }
+    requirements:
+        id: \d+
 
+planning_delete_establishment:
+    path:   /etablissements/{id}/delete
+    defaults:  { _controller: PlanningBundle:Establishments:delete }
+    requirements:
+        id: \d+
 
-#############################################################################
-#########################      PromoController      #########################
-#############################################################################
+# courses routes
+
+planning_courses:
+    path:   /cours
+    defaults:  { _controller: PlanningBundle:Courses:index }
+
+planning_edit_course:
+    path:   /cours/{id}/edit
+    defaults:  { _controller: PlanningBundle:Courses:edit }
+    requirements:
+        id: \d+
+
+planning_delete_course:
+    path:   /cours/{id}/delete
+    defaults:  { _controller: PlanningBundle:Courses:delete }
+    requirements:
+        id: \d+
+
+#classrooms routes
+
+classrooms:
+    path:   /salles
+    defaults:  { _controller: PlanningBundle:Classrooms:index }
+
+classroom_edit:
+    path:   /salle/{id}/edit
+    defaults:  { _controller: PlanningBundle:Classrooms:edit }
+    requirements:
+        id: \d+
+
+classroom_delete:
+    path:   /salle/{id}/delete
+    defaults:  { _controller: PlanningBundle:Classrooms:delete }
+    requirements:
+        id: \d+
+
+#Public Holidays routes
+
+publicholidays:
+    path:   /jour-feries
+    defaults:  { _controller: PlanningBundle:PublicHolidays:index }
+
+publicholiday_edit:
+    path:   /jour-ferie/{id}/edit
+    defaults:  { _controller: PlanningBundle:PublicHolidays:edit }
+    requirements:
+        id: \d+
+
+publicholiday_delete:
+    path:   /jour-ferie/{id}/delete
+    defaults:  { _controller: PlanningBundle:PublicHolidays:delete }
+    requirements:
+        id: \d+
+
+#Public Holidays routes
+
+holidays:
+    path:   /vacances-scolaires
+    defaults:  { _controller: PlanningBundle:Holidays:index }
+
+holiday_edit:
+    path:   /vacances-scolaires/{id}/edit
+    defaults:  { _controller: PlanningBundle:Holidays:edit }
+    requirements:
+        id: \d+
+
+holiday_delete:
+    path:   /vacances-scolaires/{id}/delete
+    defaults:  { _controller: PlanningBundle:Holidays:delete }
+    requirements:
+        id: \d+
+
+#Public Holidays routes
 
 planning_promo:
   path:   /promo
-  defaults:  { _controller: PlanningBundle:Promo:view }
+  defaults:  { _controller: PlanningBundle:Promos:view }
   
 planning_promo_add:
   path:   /addpromo
-  defaults:  { _controller: PlanningBundle:Promo:add }
+  defaults:  { _controller: PlanningBundle:Promos:add }
   
 planning_promo_edit:
   path:   /editpromo/{id}
-  defaults:  { _controller: PlanningBundle:Promo:edit }
+  defaults:  { _controller: PlanningBundle:Promos:edit }
   options:
         expose: true
         
 planning_promo_getAjaxSource:
   path:   /getAjaxSource
-  defaults:  { _controller: PlanningBundle:Promo:getAjaxSource }
-  
+  defaults:  { _controller: PlanningBundle:Promos:getAjaxSource }

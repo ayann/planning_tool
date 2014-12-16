@@ -1,0 +1,60 @@
+<?php
+
+namespace Planning\Bundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Promos
+ *
+ * @ORM\Table(name="promos")
+ * @ORM\Entity(repositoryClass="PlanningBundle\entity\PromosRepository")
+ */
+class Promos
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=40, nullable=true)
+     */
+    private $name;
+    
+   /**
+    * @var \User
+    *
+    * @ORM\ManyToOne(targetEntity="User\Bundle\Entity\User")
+    * 
+    */
+   protected $user;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="comment", type="string", length=140, nullable=true)
+     */
+    private $comment;
+
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="isValid", type="integer", nullable=true)
+     */
+    private $isValid;
+    
+    function __construct() 
+    {
+        $this->isValid = 1;
+    }
+
+    
+}
