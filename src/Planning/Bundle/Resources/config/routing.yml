@@ -1,6 +1,10 @@
 planning_index:
     path:   /
-    defaults:  { _controller: PlanningBundle:Planning:index }
+    defaults:  { _controller: PlanningBundle:Plannings:index }
+
+planning_get_add:
+    path:   /planning/add
+    defaults:  { _controller: PlanningBundle:Plannings:getAdd }
 
 # establishments routes
 

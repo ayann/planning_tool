@@ -7,17 +7,17 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Plannings
  *
- * @ORM\Table(name="plannings")
- * @ORM\Entity(repositoryClass="PlanningBundle\entity\PlanningsRepository")
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Planning\Bundle\Entity\PlanningsRepository")
  */
 class Plannings
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -43,20 +43,6 @@ class Plannings
     private $month;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="class_rooms_id", type="integer", nullable=false)
-     */
-    private $classRoomsId;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="promos_id", type="integer", nullable=false)
-     */
-    private $promosId;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="content", type="string", length=45, nullable=true)
@@ -70,7 +56,23 @@ class Plannings
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Classrooms", inversedBy="plannings", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $classroom;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Promos", inversedBy="plannings", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $promo;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Courses", inversedBy="plannings", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $course;
 
     /**
      * Get id
@@ -152,52 +154,6 @@ class Plannings
     }
 
     /**
-     * Set classRoomsId
-     *
-     * @param integer $classRoomsId
-     * @return Plannings
-     */
-    public function setClassRoomsId($classRoomsId)
-    {
-        $this->classRoomsId = $classRoomsId;
-    
-        return $this;
-    }
-
-    /**
-     * Get classRoomsId
-     *
-     * @return integer 
-     */
-    public function getClassRoomsId()
-    {
-        return $this->classRoomsId;
-    }
-
-    /**
-     * Set promosId
-     *
-     * @param integer $promosId
-     * @return Plannings
-     */
-    public function setPromosId($promosId)
-    {
-        $this->promosId = $promosId;
-    
-        return $this;
-    }
-
-    /**
-     * Get promosId
-     *
-     * @return integer 
-     */
-    public function getPromosId()
-    {
-        return $this->promosId;
-    }
-
-    /**
      * Set content
      *
      * @param string $content
@@ -241,5 +197,74 @@ class Plannings
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set classroom
+     *
+     * @param \Planning\Bundle\Entity\Classrooms $classroom
+     * @return Plannings
+     */
+    public function setClassroom(\Planning\Bundle\Entity\Classrooms $classroom)
+    {
+        $this->classroom = $classroom;
+
+        return $this;
+    }
+
+    /**
+     * Get classroom
+     *
+     * @return \Planning\Bundle\Entity\Classrooms 
+     */
+    public function getClassroom()
+    {
+        return $this->classroom;
+    }
+
+    /**
+     * Set promo
+     *
+     * @param \Planning\Bundle\Entity\Promos $promo
+     * @return Plannings
+     */
+    public function setPromo(\Planning\Bundle\Entity\Promos $promo)
+    {
+        $this->promo = $promo;
+
+        return $this;
+    }
+
+    /**
+     * Get promo
+     *
+     * @return \Planning\Bundle\Entity\Promos 
+     */
+    public function getPromo()
+    {
+        return $this->promo;
+    }
+
+    /**
+     * Set course
+     *
+     * @param \Planning\Bundle\Entity\Courses $course
+     * @return Plannings
+     */
+    public function setCourse(\Planning\Bundle\Entity\Courses $course)
+    {
+        $this->course = $course;
+
+        return $this;
+    }
+
+    /**
+     * Get course
+     *
+     * @return \Planning\Bundle\Entity\Courses 
+     */
+    public function getCourse()
+    {
+        return $this->course;
     }
 }

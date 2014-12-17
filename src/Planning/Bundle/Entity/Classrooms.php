@@ -43,10 +43,16 @@ class Classrooms
     private $numberOfComputer;
 
     /**
-       * @ORM\ManyToOne(targetEntity="Establishments", inversedBy="classrooms", cascade={"persist"})
-       * @ORM\JoinColumn(nullable=false)
-       */
+     * @ORM\ManyToOne(targetEntity="Establishments", inversedBy="classrooms", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
     private $establishment;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Plannings", mappedBy="classroom", cascade={"remove", "persist"})
+     */
+    private $plannings;
+
 
     /**
      * Get id
@@ -149,4 +155,50 @@ class Classrooms
     {
         return $this->establishment;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->plannings = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add plannings
+     *
+     * @param \Planning\Bundle\Entity\Plannings $plannings
+     * @return Classrooms
+     */
+    public function addPlanning(\Planning\Bundle\Entity\Plannings $plannings)
+    {
+        $this->plannings[] = $plannings;
+
+        return $this;
+    }
+
+    /**
+     * Remove plannings
+     *
+     * @param \Planning\Bundle\Entity\Plannings $plannings
+     */
+    public function removePlanning(\Planning\Bundle\Entity\Plannings $plannings)
+    {
+        $this->plannings->removeElement($plannings);
+    }
+
+    /**
+     * Get plannings
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPlannings()
+    {
+        return $this->plannings;
+    }
+
+    public function __toString()
+    {
+        return "Salle N° $this->number | $this->establishment";
+    }
+
 }

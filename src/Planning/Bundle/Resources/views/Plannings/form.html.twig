@@ -1,0 +1,51 @@
+{{ form_errors(form) }}
+<div class="form-group">
+    {{ form_label(form.course, "Formation", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+
+    {{ form_errors(form.course) }}
+
+    <div class="col-sm-8">
+        {{ form_widget(form.course, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+
+<div class="form-group">
+    {{ form_label(form.promo, "Promotion", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+
+    {{ form_errors(form.promo) }}
+
+    <div class="col-sm-8">
+        {{ form_widget(form.promo, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+
+<div class="form-group">
+    {{ form_label(form.classroom, "Salle", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+
+    {{ form_errors(form.classroom) }}
+
+    <div class="col-sm-8">
+        {{ form_widget(form.classroom, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+
+<div class="form-group">
+    {{ form_label(form.startTime, "Date et heure de début", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+
+    {{ form_errors(form.startTime) }}
+
+    <div class="col-sm-8">
+        {{ form_widget(form.startTime, {'attr': {'required':'required'}}) }}
+    </div>
+</div>
+
+<div class="form-group">
+    {{ form_label(form.endTime, "Date et heure de début", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+
+    {{ form_errors(form.endTime) }}
+
+    <div class="col-sm-8">
+        {{ form_widget(form.endTime, {'attr': {'required':'required'}}) }}
+    </div>
+</div>
+

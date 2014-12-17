@@ -15,13 +15,20 @@
                         <li class="{{ 'planning_index'|activeLink }}">
                             <a href="{{ path('planning_index') }}"><i class="fa fa-desktop"></i> Tableau de bord</a>
                         </li>
+
+                        <ul class="inner_sidebar_ul">
+                            <p class="sub_title"><i class="fa fa-calendar"></i> Gestion des plannings</p>
+                            <li class="{{ 'planning_get_add'|activeLink }}">
+                                <a href="{{ path('planning_get_add') }}"><i class="fa fa-newspaper-o"></i>Gestion des cours</a>
+                            </li>
+                            <li><a href=""><i class="fa fa-clock-o"></i>Consulter un planning</a></li>
+
+                        </ul>
                         
                         <li><a href=""><i class="fa fa-group"></i> Gestion des promos</a></li>
 
-                        <li><a href=""><i class="fa fa-calendar"></i> Gestion des plannings</a></li>
-
                         <li class="{{ 'holidays'|activeLink }} {{ 'holiday_edit'|activeLink }}">
-                            <a href="{{ path('holidays') }}"><i class="fa fa-clock-o"></i> Gestion des vacances</a>
+                            <a href="{{ path('holidays') }}"><i class="fa fa-plane"></i> Gestion des vacances</a>
                         </li>
 
                         <li class="{{ 'publicholidays'|activeLink }} {{ 'publicholiday_edit'|activeLink }}">

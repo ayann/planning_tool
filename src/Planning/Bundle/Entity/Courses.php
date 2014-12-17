@@ -28,6 +28,11 @@ class Courses
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Plannings", mappedBy="course", cascade={"remove", "persist"})
+     */
+    private $plannings;
+
 
     /**
      * Get id
@@ -61,4 +66,50 @@ class Courses
     {
         return $this->name;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->plannings = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add plannings
+     *
+     * @param \Planning\Bundle\Entity\Plannings $plannings
+     * @return Courses
+     */
+    public function addPlanning(\Planning\Bundle\Entity\Plannings $plannings)
+    {
+        $this->plannings[] = $plannings;
+
+        return $this;
+    }
+
+    /**
+     * Remove plannings
+     *
+     * @param \Planning\Bundle\Entity\Plannings $plannings
+     */
+    public function removePlanning(\Planning\Bundle\Entity\Plannings $plannings)
+    {
+        $this->plannings->removeElement($plannings);
+    }
+
+    /**
+     * Get plannings
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPlannings()
+    {
+        return $this->plannings;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
 }

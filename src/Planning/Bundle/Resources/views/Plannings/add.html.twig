@@ -1,0 +1,44 @@
+{% extends 'PlanningBundle::layout.html.twig' %}
+
+{% block title %}Insta | Gestion des cours{% endblock %}
+
+{% block localisation %}
+    Gestion des cours
+{% endblock %}
+
+{% block ariane %}
+    <span class="active"><i class="fa fa-home"></i><a href="">Home</a></span>/ Gestion des cours
+{% endblock %}
+
+{% block main_content %}
+    <div class="row">
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 center-box">
+            <div class="well white_well animated zoomIn">
+                {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                    {{ include('PlanningBundle:Plannings:form.html.twig') }} 
+                    {{ form_widget(form.save, {'attr': {'class': 'btn btn-edit btn-primary btn-green'}, 'label': 'Modifier' }) }}
+                    {{ form_rest(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock main_content %}
+
+{% block javascripts %}
+    
+    {{ parent() }}
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $('#planning_bundle_plannings_startTime_date, #planning_bundle_plannings_endTime_date').datetimepicker({
+                lang:'fr',
+                timepicker:false,
+                format:'Y-m-d'
+            });
+            $('#planning_bundle_plannings_startTime_time, #planning_bundle_plannings_endTime_time').datetimepicker({
+                datepicker:false,
+                format:'H:i'
+            });
+        });
+    </script>
+{% endblock %}
+

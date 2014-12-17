@@ -7,17 +7,17 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Promos
  *
- * @ORM\Table(name="promos")
- * @ORM\Entity(repositoryClass="PlanningBundle\entity\PromosRepository")
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Planning\Bundle\Entity\PromosRepository")
  */
 class Promos
 {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
@@ -28,6 +28,10 @@ class Promos
      */
     private $number;
 
+    /**
+    * @ORM\OneToMany(targetEntity="Plannings", mappedBy="promo", cascade={"remove", "persist"})
+    */
+    private $plannings;
 
 
     /**
@@ -59,6 +63,51 @@ class Promos
      * @return string 
      */
     public function getNumber()
+    {
+        return $this->number;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->plannings = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add plannings
+     *
+     * @param \Planning\Bundle\Entity\Plannings $plannings
+     * @return Promos
+     */
+    public function addPlanning(\Planning\Bundle\Entity\Plannings $plannings)
+    {
+        $this->plannings[] = $plannings;
+
+        return $this;
+    }
+
+    /**
+     * Remove plannings
+     *
+     * @param \Planning\Bundle\Entity\Plannings $plannings
+     */
+    public function removePlanning(\Planning\Bundle\Entity\Plannings $plannings)
+    {
+        $this->plannings->removeElement($plannings);
+    }
+
+    /**
+     * Get plannings
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPlannings()
+    {
+        return $this->plannings;
+    }
+
+    public function __toString()
     {
         return $this->number;
     }
