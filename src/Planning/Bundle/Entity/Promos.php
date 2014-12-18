@@ -92,7 +92,7 @@ class Promos
         $this->isValid = 1;
     }
 
-    
+
     /**
      * Get id
      *
@@ -104,26 +104,118 @@ class Promos
     }
 
     /**
-     * Set name
+     * Set number
      *
-     * @param string $name
+     * @param integer $number
      * @return Promos
      */
-    public function setName($name)
+    public function setNumber($number)
     {
-        $this->name = $name;
-    
+        $this->number = $number;
+
         return $this;
     }
 
     /**
-     * Get name
+     * Get number
+     *
+     * @return integer 
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Promos
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
      *
      * @return string 
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
+        return $this->title;
+    }
+
+    /**
+     * Set memo
+     *
+     * @param string $memo
+     * @return Promos
+     */
+    public function setMemo($memo)
+    {
+        $this->memo = $memo;
+
+        return $this;
+    }
+
+    /**
+     * Get memo
+     *
+     * @return string 
+     */
+    public function getMemo()
+    {
+        return $this->memo;
+    }
+
+    /**
+     * Set dateStart
+     *
+     * @param \DateTime $dateStart
+     * @return Promos
+     */
+    public function setDateStart($dateStart)
+    {
+        $this->dateStart = $dateStart;
+
+        return $this;
+    }
+
+    /**
+     * Get dateStart
+     *
+     * @return \DateTime 
+     */
+    public function getDateStart()
+    {
+        return $this->dateStart;
+    }
+
+    /**
+     * Set dateEnd
+     *
+     * @param \DateTime $dateEnd
+     * @return Promos
+     */
+    public function setDateEnd($dateEnd)
+    {
+        $this->dateEnd = $dateEnd;
+
+        return $this;
+    }
+
+    /**
+     * Get dateEnd
+     *
+     * @return \DateTime 
+     */
+    public function getDateEnd()
+    {
+        return $this->dateEnd;
     }
 
     /**
@@ -135,7 +227,7 @@ class Promos
     public function setComment($comment)
     {
         $this->comment = $comment;
-    
+
         return $this;
     }
 
@@ -158,7 +250,7 @@ class Promos
     public function setIsValid($isValid)
     {
         $this->isValid = $isValid;
-    
+
         return $this;
     }
 
@@ -181,7 +273,7 @@ class Promos
     public function setUser(\User\Bundle\Entity\User $user = null)
     {
         $this->user = $user;
-    
+
         return $this;
     }
 
@@ -228,8 +320,7 @@ class Promos
         return $this->plannings;
     }
 
-    public function __toString()
-    {
-        return $this->number;
+    public function __toString(){
+        return "$this->number";
     }
 }

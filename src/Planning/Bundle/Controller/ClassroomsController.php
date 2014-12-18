@@ -1,124 +1,109 @@
 <?php
 
-namespace Planning\Bundle\Controller;
+    namespace Planning\Bundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Planning\Bundle\Entity\Classrooms;
-use Planning\Bundle\Form\ClassroomsType;
+    use Symfony\Component\HttpFoundation\Request;
+    use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+    use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+    use Planning\Bundle\Entity\Classrooms;
+    use Planning\Bundle\Form\ClassroomsType;
 
-<<<<<<< HEAD
-class ClassroomsController extends Controller
-{
-
-=======
-/**
- * Gestion des Salles
- * 
- */
-class ClassroomsController extends Controller
-{
     /**
-     * Page Principale 
-     * - Affiche le tableau contenant la totalité des Salles
-     * - Affiche le formulaire d'ajout d'une salle
+     * Gestion des Salles
      * 
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @return type
      */
->>>>>>> maxime
-    public function indexAction(Request $request){
+    class ClassroomsController extends Controller{
+        /**
+         * Page Principale 
+         * - Affiche le tableau contenant la totalité des Salles
+         * - Affiche le formulaire d'ajout d'une salle
+         * 
+         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @return type
+         */
+        public function indexAction(Request $request){
 
-        $classroom = new Classrooms;
-        $form = $this->createForm(new ClassroomsType(), $classroom);
-        
-        $em = $this->getDoctrine()->getManager(); // Entity manager
+            $classroom = new Classrooms;
+            $form = $this->createForm(new ClassroomsType(), $classroom);
+            
+            $em = $this->getDoctrine()->getManager(); // Entity manager
 
-        $classrooms = $em->getRepository('PlanningBundle:Classrooms')->findAll();
+            $classrooms = $em->getRepository('PlanningBundle:Classrooms')->findAll();
 
-        if ($request->isMethod('POST')) {
-            if ($form->handleRequest($request)->isValid()) {
-                $em->persist($classroom);
-                $em->flush();
-
-                $request->getSession()->getFlashBag()->add('notice', 'La salle a bien été enregistrée.');
-                return $this->redirect($this->generateUrl('classrooms'));
-            }
-        }else{
-            return $this->render('PlanningBundle:Classrooms:index.html.twig', 
-                array(
-                    'form' => $form->createView(),
-                    'classrooms' => $classrooms
-                )
-            );
-        }
-    }
-
-<<<<<<< HEAD
-
-=======
-    /**
-     * Page de modification d'une salle
-     * 
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param type $id
-     * @return type
-     */
->>>>>>> maxime
-    public function editAction(Request $request, $id){
-
-        $em = $this->getDoctrine()->getManager();
-
-        $classroom = $em->getRepository('PlanningBundle:Classrooms')->find($id);
-        
-        $form = $this->createForm(new ClassroomsType(), $classroom);
-
-        if (!$classroom) {
-            $request->getSession()->getFlashBag()->add('alert', "La salle d'id  $id n'existe pas.");
-            return $this->redirect($this->generateUrl('classrooms'));
-        }else{
             if ($request->isMethod('POST')) {
                 if ($form->handleRequest($request)->isValid()) {
+                    $em->persist($classroom);
                     $em->flush();
 
-                    $request->getSession()->getFlashBag()->add('notice', 'Le module a bien été modifié.');
+                    $request->getSession()->getFlashBag()->add('notice', 'La salle a bien été enregistrée.');
                     return $this->redirect($this->generateUrl('classrooms'));
                 }
             }else{
-                return $this->render('PlanningBundle:Classrooms:edit.html.twig', 
+                return $this->render('PlanningBundle:Classrooms:index.html.twig', 
                     array(
                         'form' => $form->createView(),
+                        'classrooms' => $classrooms
                     )
                 );
             }
         }
-    }
 
-<<<<<<< HEAD
+        /**
+         * Page de modification d'une salle
+         * 
+         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @param type $id
+         * @return type
+         */
+        public function editAction(Request $request, $id){
 
-=======
-    /**
-     * Supprimer une salle
-     * 
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param type $id
-     * @return type
-     */
->>>>>>> maxime
-    public function deleteAction(Request $request, $id){
+            $em = $this->getDoctrine()->getManager();
 
-        $em = $this->getDoctrine()->getManager();
+            $classroom = $em->getRepository('PlanningBundle:Classrooms')->find($id);
+            
+            $form = $this->createForm(new ClassroomsType(), $classroom);
 
-        $classroom = $em->getRepository('PlanningBundle:Classrooms')->find($id);
+            if (!$classroom) {
+                $request->getSession()->getFlashBag()->add('alert', "La salle d'id  $id n'existe pas.");
+                return $this->redirect($this->generateUrl('classrooms'));
+            }else{
+                if ($request->isMethod('POST')) {
+                    if ($form->handleRequest($request)->isValid()) {
+                        $em->flush();
 
-        if (!$classroom) {
-            $this->get('session')->getFlashBag()->add('alert', "La salle d'id  $id  n'existe pas.");
-        }else{
-            $em->remove($classroom);
-            $em->flush();            
+                        $request->getSession()->getFlashBag()->add('notice', 'Le module a bien été modifié.');
+                        return $this->redirect($this->generateUrl('classrooms'));
+                    }
+                }else{
+                    return $this->render('PlanningBundle:Classrooms:edit.html.twig', 
+                        array(
+                            'form' => $form->createView(),
+                        )
+                    );
+                }
+            }
         }
 
-        return $this->redirect($this->generateUrl('classrooms'));
+        /**
+         * Supprimer une salle
+         * 
+         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @param type $id
+         * @return type
+         */
+        public function deleteAction(Request $request, $id){
+
+            $em = $this->getDoctrine()->getManager();
+
+            $classroom = $em->getRepository('PlanningBundle:Classrooms')->find($id);
+
+            if (!$classroom) {
+                $this->get('session')->getFlashBag()->add('alert', "La salle d'id  $id  n'existe pas.");
+            }else{
+                $em->remove($classroom);
+                $em->flush();            
+            }
+
+            return $this->redirect($this->generateUrl('classrooms'));
+        }
     }
-}

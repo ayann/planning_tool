@@ -32,7 +32,13 @@ class Courses
      * @ORM\OneToMany(targetEntity="Plannings", mappedBy="course", cascade={"remove", "persist"})
      */
     private $plannings;
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->plannings = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -65,13 +71,6 @@ class Courses
     public function getName()
     {
         return $this->name;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->plannings = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -109,39 +108,6 @@ class Courses
 
     public function __toString()
     {
-        return $this->name;
-    }
-    
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Courses
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
+        return "$this->name";
     }
 }
