@@ -100,11 +100,12 @@
     {{ parent() }}
     <script type="text/javascript">
         jQuery(document).ready(function($) {
-            $('#planning_bundle_plannings_start_date, #planning_bundle_plannings_end_date').datetimepicker({
+            $('#planning_bundle_holidays_start, #planning_bundle_holidays_end, #planning_bundle_plannings_start_date, #planning_bundle_plannings_end_date, #planning_bundle_publicholidays_date').datetimepicker({
                 lang:'fr',
                 timepicker:false,
                 format:'Y-m-d'
             });
+
             $('#planning_bundle_plannings_start_time, #planning_bundle_plannings_end_time').datetimepicker({
                 datepicker:false,
                 format:'H:i'
