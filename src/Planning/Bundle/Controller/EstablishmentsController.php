@@ -6,7 +6,19 @@
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
     use Symfony\Component\HttpFoundation\Request;
     
-    class EstablishmentsController extends Controller{
+    /**
+     * Gestion des Etablisements
+     */
+    class EstablishmentsController extends Controller
+    {
+        /**
+         *  Page Principale 
+         * - Affiche le tableau contenant les etablisements
+         * - Affiche le formulaire d'ajout d'etablisement
+         * 
+         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @return type
+         */
         public function indexAction(Request $request){
             $establishments = new Establishments;
             $form = $this->createForm(new EstablishmentsType(), $establishments);
@@ -36,6 +48,14 @@
             }
         }
 
+        /**
+         * 
+         * Modifier un etablisement
+         * 
+         * @param type $id
+         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @return type
+         */
         public function editAction($id, Request $request){
             $em = $this->getDoctrine()->getManager();
             $repository = $em->getRepository('PlanningBundle:Establishments');
@@ -65,6 +85,13 @@
             }
         }
 
+        /**
+         * Supprimer un etablissement
+         * 
+         * @param type $id
+         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @return type
+         */
         public function deleteAction($id, Request $request){
             $em = $this->getDoctrine()->getManager();
             $repository = $em->getRepository('PlanningBundle:Establishments');

@@ -7,8 +7,17 @@
     use Planning\Bundle\Entity\Holidays;
     use Planning\Bundle\Form\HolidaysType;
 
-    class HolidaysController extends Controller{
-
+    /**
+     * Gestion des Vacances
+     */
+    class HolidaysController extends Controller
+    {
+        /**
+         * Liste des vacances
+         * 
+         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @return type
+         */
         public function indexAction(Request $request){
 
             $holiday = new Holidays;
@@ -36,7 +45,13 @@
             );
         }
 
-
+        /**
+         * Modifier une periode de vacance
+         * 
+         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @param type $id
+         * @return type
+         */
         public function editAction(Request $request, $id){
 
             $em = $this->getDoctrine()->getManager();
@@ -66,7 +81,13 @@
             );
         }
 
-
+        /**
+         * Supprimer une periode de vacance
+         * 
+         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @param type $id
+         * @return type
+         */
         public function deleteAction(Request $request, $id){
 
             $em = $this->getDoctrine()->getManager();

@@ -13,3 +13,6 @@
 */.DS_Store
 .DS_Store
 .DS_Store?
+/src/nbproject/private/
+/app/nbproject/private/
+/web/nbproject/private/

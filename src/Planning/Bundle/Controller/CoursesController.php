@@ -6,7 +6,19 @@
     use Symfony\Bundle\FrameworkBundle\Controller\Controller;
     use Symfony\Component\HttpFoundation\Request;
     
-    class CoursesController extends Controller{
+    /**
+     * Gestion des cours
+     */
+    class CoursesController extends Controller
+    {
+        /**
+         *  Page Principale 
+         * - Affiche le tableau contenant les cours
+         * - Affiche le formulaire d'ajout de cours
+         * 
+         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @return type
+         */
         public function indexAction(Request $request){
             $course = new Courses;
             $form = $this->createForm(new CoursesType(), $course);
@@ -33,7 +45,14 @@
                 );
             }
         }
-
+        
+        /**
+         * Modifier un cours
+         * 
+         * @param type $id
+         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @return type
+         */
         public function editAction($id, Request $request){
             $em = $this->getDoctrine()->getManager();
             $repository = $em->getRepository('PlanningBundle:Courses');
@@ -62,7 +81,14 @@
                 }
             }
         }
-
+        
+        /**
+         * Supprimer un cours
+         * 
+         * @param type $id
+         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @return type
+         */
         public function deleteAction($id, Request $request){
             $em = $this->getDoctrine()->getManager();
             $repository = $em->getRepository('PlanningBundle:Courses');

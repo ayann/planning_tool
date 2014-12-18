@@ -24,17 +24,45 @@ class Promos
     /**
      * @var string
      *
+     * @ORM\Column(name="number", type="integer", nullable=true)
+     */
+    private $number;
+	
+    /**
+     * @var string
+     *
      * @ORM\Column(name="name", type="string", length=40, nullable=true)
      */
-    private $name;
+    private $title;
     
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="memo", type="string", length=40, nullable=true)
+     */
+    private $memo;
+	
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="date_start", type="datetime", nullable=true)
+     */
+    private $dateStart;
+	
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="date_end", type="datetime", nullable=true)
+     */
+    private $dateEnd;
+	
    /**
     * @var \User
     *
     * @ORM\ManyToOne(targetEntity="User\Bundle\Entity\User")
     * 
     */
-   protected $user;
+    protected $user;
     
     /**
      * @var string

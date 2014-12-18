@@ -12,20 +12,27 @@
             <div class="well white_well animated zoomIn">
                     <table class="row-border" id="tabPromo">
                         <thead>
-                        <tr>
-                            <th>id</th>
-                            <th>Nom</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-
-                    <tfoot>
-                        <tr>
-                            <th>id</th>
-                            <th>Nom</th>
-                            <th></th>
-                        </tr>
-                    </tfoot>
+                            <tr>
+                                <th>number</th>
+                                <th>name</th>
+                                <th>memo</th>
+                                <th>dateStart</th>
+                                <th>dateEnd</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>number</th>
+                                <th>name</th>
+                                <th>memo</th>
+                                <th>dateStart</th>
+                                <th>dateEnd</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
                     </table>
             </div>
         </div>
@@ -99,13 +106,16 @@
                 "processing": true,
                 "serverSide": true,
                 "columns": [
-                    { 'name': 'id' },
+                    { 'name': 'number' },
                     { 'name': 'name' },
-                    { 'name': '' }
+                    { 'name': 'memo' },
+                    { 'name': 'dateStart' },
+                    { 'name': 'dateEnd' },
+                    { 'name': 'id' }
                 ],
                 "columnDefs": [ 
                     {
-                        "targets": 2,
+                        "targets": 5,
                         "data": "download_link",
                         "orderable": false,
                         "render": function ( data, type, full, meta ) 

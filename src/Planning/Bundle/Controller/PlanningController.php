@@ -7,6 +7,10 @@ use Planning\Bundle\Form\EstablishmentsType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Gestion du planning
+ * 
+ */
 class PlanningController extends Controller
 {
     public function indexAction()

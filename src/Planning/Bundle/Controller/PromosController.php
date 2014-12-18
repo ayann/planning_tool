@@ -11,6 +11,9 @@ use Planning\Bundle\Form\PromosType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+/**
+ * Gestion des classes
+ */
 class PromosController extends Controller
 {
     public function ViewAction()
@@ -18,6 +21,13 @@ class PromosController extends Controller
         return $this->render('PlanningBundle:Promos:view.html.twig');
     }
     
+    /**
+     * Recuperation des data en base de donnée 
+     * Retour pour le DataTable
+     * 
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return \Symfony\Component\HttpFoundation\Response JSON
+     */
     public function getAjaxSourceAction(Request $request)
     {
         $get = $request->query->all();
@@ -53,15 +63,14 @@ class PromosController extends Controller
             $row = array();
             foreach( $aRow as $key => $value)
             {
-                if ( $key == "id" )
+                foreach( $get['columns'] as $key2 => $value2 )
                 {
-                    $row[] = $value;
+                    if ( $key == $value2['name'] )
+                    {
+                        $row[] = $value;
+                    }
                 }
-                elseif( $key == "name" )
-                {
-                    $row[] = $value;
-                }
-
+                
             }
             $output['data'][] = $row;
         }
@@ -71,7 +80,12 @@ class PromosController extends Controller
         return new Response(json_encode($output));
     
     }
-
+    
+    /**
+     * Ajout d'une classe
+     * 
+     * @return type
+     */
     public function addAction()
     {   
         $request = $this->getRequest();
@@ -100,6 +114,13 @@ class PromosController extends Controller
         ));
     }
     
+    /**
+     * Modification d'une classe
+     * 
+     * @param type $id
+     * @return type
+     * @throws type
+     */
     public function editAction($id)
     {
         $request = $this->getRequest();
@@ -136,6 +157,13 @@ class PromosController extends Controller
         ));
     }
     
+    /**
+     * Suppression d'une classe
+     * 
+     * @param type $id
+     * @return type
+     * @throws type
+     */
     public function deleteAction($id)
     {
         $em = $this->getDoctrine()->getManager();
