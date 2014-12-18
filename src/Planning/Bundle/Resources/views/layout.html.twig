@@ -29,7 +29,9 @@
 
                         </ul>
                         
-                        <li><a href=""><i class="fa fa-group"></i> Gestion des promos</a></li>
+                        <li class="{{ 'planning_promo'|activeLink }}">
+                            <a href="{{ path('planning_promo') }}"><i class="fa fa-group"></i> Gestion des promos</a>
+                        </li>
 
                         <li class="{{ 'holidays'|activeLink }} {{ 'holiday_edit'|activeLink }}">
                             <a href="{{ path('holidays') }}"><i class="fa fa-plane"></i> Gestion des vacances</a>
