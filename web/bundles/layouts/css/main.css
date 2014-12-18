@@ -118,3 +118,9 @@ a.plan { color: #2C3E50; }
 .message_row { display: inline-block; width: 88%; float: left; }
 
 .clear_box { clear: both; }
+
+.fc-day-number { font-weight: bold; font-size: 20px; }
+
+.fc-day-header { color: #D56520; font-size: 15px; background-color: #E1E1E1; padding: 10px !important; border-color: #d4d4d4 !important; }
+
+.fc-content { font-size: 15px; font-weight: bold; padding: 10px; }

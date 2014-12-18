@@ -28,6 +28,12 @@ planning_show_all:
     requirements:
         id: \d+
 
+planning_show:
+    path:   /plannings/{id}/consulter
+    defaults:  { _controller: PlanningBundle:Plannings:show }
+    requirements:
+        id: \d+
+
 # establishments routes
 
 planning_establishments:

@@ -9,8 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 
 class PlanningsController extends Controller{
-    public function indexAction()
-    {
+    public function indexAction(){
         return $this->render('PlanningBundle:Plannings:index.html.twig', array('1' => 'x'));
     }
 
@@ -147,6 +146,22 @@ class PlanningsController extends Controller{
 
         return $this->render('PlanningBundle:Plannings:show_all.html.twig',
             array('promos' => $promos)
+        );
+    }
+
+    public function showAction($id){
+        $em = $this->getDoctrine()->getManager(); // Entity manager
+
+        $promo = $em->getRepository('PlanningBundle:Promos')->find($id);
+
+        if (!$promo) {
+            $request->getSession()->getFlashBag()->add('alert', "La promotion d'id $id n'existe pas.");
+            return $this->redirect($this->generateUrl('planning_show_all'));
+        }
+
+        $plannings = $promo->getPlannings();
+        return $this->render('PlanningBundle:Plannings:show.html.twig',
+            array('plannings' => $plannings)
         );
     }
 

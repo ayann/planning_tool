@@ -21,6 +21,7 @@ class PlanningTwigExtension extends \Twig_Extension{
             new \Twig_SimpleFilter('activeLink', array($this, 'activeLinkFilter')),
             new \Twig_SimpleFilter('date_french', array($this, 'date_frenchFilter')),
             new \Twig_SimpleFilter('datetime_french', array($this, 'datetime_frenchFilter')),
+            new \Twig_SimpleFilter('full_calendar_iso_date', array($this, 'full_calendar_iso_dateFilter')),
         );
     }
 
@@ -65,6 +66,12 @@ class PlanningTwigExtension extends \Twig_Extension{
         $d = "$day/$day_num/$month/$year";
         list($hour, $mn) = explode(":", $time);
         return $this->date_frenchFilter($d).' '.$hour."h $mn";
+    }
+
+    public function full_calendar_iso_dateFilter($datetime)
+    {
+        list($date, $time) = explode("/", $datetime);
+        return $date."T".$time;
     }
 
     public function getName(){

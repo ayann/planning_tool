@@ -1,0 +1,50 @@
+{% extends 'PlanningBundle::layout.html.twig' %}
+
+{% block title %}Insta | Planning de la promotion{% endblock %}
+
+{% block localisation %}
+    Planning de la promotion
+{% endblock %}
+
+{% block ariane %}
+    <span class="active"><i class="fa fa-home"></i><a href="">Home</a></span>/ Planning de la promotion
+{% endblock %}
+
+{% block main_content %}
+    <div class="clear_box"></div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 center-box">
+            <div class="well white_well animated zoomIn">
+                <div id='calendar'></div>
+            </div>
+        </div>
+    </div>
+{% endblock main_content %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#calendar').fullCalendar({
+                editable: true,
+                height: 530,
+                eventStartEditable: false,
+                weekends: false,
+                eventLimit: true, // allow "more" link when too many events
+                timeFormat: 'H(:mm)', // uppercase H for 24-hour clock
+                lang: 'fr',
+                columnFormat:{ month: 'dddd' },
+                events: [
+                    {% for planning in plannings %}
+                        {
+                            title: "{{planning.course}}",
+                            start: "{{planning.start|date_modify('+1 day')|date('Y-m-d/H:i:s')|full_calendar_iso_date}}",
+                            end: "{{planning.end|date_modify('+1 day')|date('Y-m-d/H:i:s')|full_calendar_iso_date}}",
+                        },
+                    {% endfor %}
+                ]
+            });
+        });
+    </script>
+{% endblock %}

@@ -29,7 +29,7 @@
                                 <tr>
                                     <td>{{ promo.number }}</td>
                                     
-                                    <td><a href="{{ path('planning_edit_course', { 'id': promo.id }) }}" class="edit" title="Modifier"><i class="fa fa-folder-open-o"></i> Consulter</a></td>
+                                    <td><a href="{{ path('planning_show', { 'id': promo.id }) }}" class="edit" title="Consulter"><i class="fa fa-folder-open-o"></i> Consulter</a></td>
                                 </tr>
                             {% endfor %}
                         </tbody>
