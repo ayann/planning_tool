@@ -1,0 +1,18 @@
+{{ form_errors(form) }}
+
+        <div class="control-group">
+            <div class="controls-row">
+                {{ form_label(form.name, "Nom*", {'label_attr': {'class': 'span1'}}) }}
+                {{ form_widget(form.name, { 'attr': {'class': 'span5'} }) }}   
+                {{ form_label(form.comment, "Commentaire", {'label_attr': {'class': 'span1'}}) }}
+                {{ form_widget(form.comment, { 'attr': {'class': 'span5'} }) }}
+            </div>
+        </div>
+
+{{ form_rest(form) }}
+
+<div class="form-actions">
+<button type="submit" class="btn">Send</button>
+</div>
+
+   

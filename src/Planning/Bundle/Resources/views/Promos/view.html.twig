@@ -1,0 +1,140 @@
+{% extends 'PlanningBundle::layout.html.twig' %}
+
+{% block title %}Insta | Gestion des Promos{% endblock %}
+
+{% block ariane %}
+    <span class="active"><i class="fa fa-home"></i><a href="">Home</a></span>/ Gestion des Promos
+{% endblock %}
+
+{% block main_content %}
+ <div class="row">
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <div class="well white_well animated zoomIn">
+                    <table class="row-border" id="tabPromo">
+                        <thead>
+                            <tr>
+                                <th>number</th>
+                                <th>name</th>
+                                <th>memo</th>
+                                <th>dateStart</th>
+                                <th>dateEnd</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>number</th>
+                                <th>name</th>
+                                <th>memo</th>
+                                <th>dateStart</th>
+                                <th>dateEnd</th>
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+            </div>
+        </div>
+
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <div class="left_side_block">
+                <a data-toggle="modal" href='#add_modal'>
+                    <div class="block_content">
+                        <i class="fa fa-plus"></i>
+                    </div>
+                    <div class="block_footer">
+                        Ajouter
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        {% if form is defined %}
+            <div class="modal animated flipInX" id="add_modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Ajouter un établissement</h4>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="modal fade" id="plan_modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Plan d'accès</h4>
+                    </div>
+                    <div class="modal-body">
+                        <iframe id="map" width="100%" height="450" src="">
+                        </iframe>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            
+            
+            
+            
+            
+          
+<a href="{{ path('planning_promo_add') }}">
+    add promo
+</a>
+{% endblock main_content %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+
+        $(document).ready(function() {
+            
+            $('#tabPromo').dataTable({
+                "processing": true,
+                "serverSide": true,
+                "columns": [
+                    { 'name': 'number' },
+                    { 'name': 'name' },
+                    { 'name': 'memo' },
+                    { 'name': 'dateStart' },
+                    { 'name': 'dateEnd' },
+                    { 'name': 'id' }
+                ],
+                "columnDefs": [ 
+                    {
+                        "targets": 5,
+                        "data": "download_link",
+                        "orderable": false,
+                        "render": function ( data, type, full, meta ) 
+                        {
+                          var route = Routing.generate('planning_promo_edit', { id: full[0] });;
+                          return '<a href="'+route+'">Edit</a>';
+                        }
+                    }
+                ],
+                "ajax": {
+                    "url": "{{ path('planning_promo_getAjaxSource') }}",
+                    "dataType": "json"
+                }
+            });
+        });
+
+    </script> 
+
+
+
+{% endblock %}
+   

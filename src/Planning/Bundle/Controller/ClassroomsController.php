@@ -8,9 +8,26 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Planning\Bundle\Entity\Classrooms;
 use Planning\Bundle\Form\ClassroomsType;
 
+<<<<<<< HEAD
 class ClassroomsController extends Controller
 {
 
+=======
+/**
+ * Gestion des Salles
+ * 
+ */
+class ClassroomsController extends Controller
+{
+    /**
+     * Page Principale 
+     * - Affiche le tableau contenant la totalité des Salles
+     * - Affiche le formulaire d'ajout d'une salle
+     * 
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return type
+     */
+>>>>>>> maxime
     public function indexAction(Request $request){
 
         $classroom = new Classrooms;
@@ -38,7 +55,17 @@ class ClassroomsController extends Controller
         }
     }
 
+<<<<<<< HEAD
 
+=======
+    /**
+     * Page de modification d'une salle
+     * 
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param type $id
+     * @return type
+     */
+>>>>>>> maxime
     public function editAction(Request $request, $id){
 
         $em = $this->getDoctrine()->getManager();
@@ -68,7 +95,17 @@ class ClassroomsController extends Controller
         }
     }
 
+<<<<<<< HEAD
 
+=======
+    /**
+     * Supprimer une salle
+     * 
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param type $id
+     * @return type
+     */
+>>>>>>> maxime
     public function deleteAction(Request $request, $id){
 
         $em = $this->getDoctrine()->getManager();

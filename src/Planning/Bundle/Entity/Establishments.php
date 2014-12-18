@@ -61,7 +61,6 @@ class Establishments
     */
     private $classrooms;
 
-
     /**
      * Get id
      *
@@ -191,6 +190,7 @@ class Establishments
     {
         return $this->name;
     }
+
     /**
      * Constructor
      */

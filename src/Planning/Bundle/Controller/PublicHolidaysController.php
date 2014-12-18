@@ -7,8 +7,21 @@
     use Planning\Bundle\Entity\PublicHolidays;
     use Planning\Bundle\Form\PublicHolidaysType;
 
+<<<<<<< HEAD
     class PublicHolidaysController extends Controller{
 
+=======
+    /**
+     * Gestion des jours ferier
+     */
+    class PublicHolidaysController extends Controller
+    {
+        /**
+         * Affiche la liste des jours ferier et donne la possibilité d'en ajouter
+         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @return type
+         */
+>>>>>>> maxime
         public function indexAction(Request $request){
 
             $publicholiday = new PublicHolidays;
@@ -36,7 +49,16 @@
             }
         }
 
+<<<<<<< HEAD
 
+=======
+        /**
+         * Modifier une date de jour ferier
+         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @param type $id
+         * @return type
+         */
+>>>>>>> maxime
         public function editAction(Request $request, $id){
 
             $em = $this->getDoctrine()->getManager();
@@ -66,7 +88,17 @@
             }
         }
 
+<<<<<<< HEAD
 
+=======
+        /**
+         * Supprimer un jour ferier
+         * 
+         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @param type $id
+         * @return type
+         */
+>>>>>>> maxime
         public function deleteAction(Request $request, $id){
 
             $em = $this->getDoctrine()->getManager();

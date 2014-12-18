@@ -2,6 +2,10 @@ planning_index:
     path:   /
     defaults:  { _controller: PlanningBundle:Plannings:index }
 
+# incluide routes
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
 planning_get_add:
     path:   /plannings
     defaults:  { _controller: PlanningBundle:Plannings:getAdd }
@@ -123,3 +127,24 @@ holiday_delete:
     defaults:  { _controller: PlanningBundle:Holidays:delete }
     requirements:
         id: \d+
+
+
+#Promos routes
+
+planning_promo:
+  path:   /promo
+  defaults:  { _controller: PlanningBundle:Promos:view }
+  
+planning_promo_add:
+  path:   /addpromo
+  defaults:  { _controller: PlanningBundle:Promos:add }
+  
+planning_promo_edit:
+  path:   /editpromo/{id}
+  defaults:  { _controller: PlanningBundle:Promos:edit }
+  options:
+        expose: true
+        
+planning_promo_getAjaxSource:
+  path:   /getAjaxSource
+  defaults:  { _controller: PlanningBundle:Promos:getAjaxSource }

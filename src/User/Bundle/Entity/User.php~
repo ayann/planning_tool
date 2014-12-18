@@ -1,0 +1,67 @@
+<?php 
+    namespace User\Bundle\Entity;
+
+    use FOS\UserBundle\Model\User as BaseUser;
+    use Doctrine\ORM\Mapping as ORM;
+
+    /**
+     * @ORM\Entity
+     * @ORM\Table(name="fos_user")
+     */
+    class User extends BaseUser
+    {
+        /**
+         * @ORM\Id
+         * @ORM\Column(type="integer")
+         * @ORM\GeneratedValue(strategy="AUTO")
+         */
+        protected $id;
+
+       /**
+        * @var string
+        *
+        * @ORM\Column(name="last_name", type="string", length=45, nullable=true)
+        */
+        private $lastName;
+
+       /**
+        * @var string
+        *
+        * @ORM\Column(name="first_name", type="string", length=45, nullable=true)
+        */
+        private $firstName;
+        
+       /**
+        * @var string
+        *
+        * @ORM\Column(name="phome", type="string", length=45, nullable=true)
+        */
+        private $phome;
+
+       /**
+        * @var string
+        *
+        * @ORM\Column(name="address", type="string", length=45, nullable=true)
+        */
+        private $address;
+        
+       /**
+        * @var boolean
+        *
+        * @ORM\Column(name="personnal_computer", type="boolean", nullable=true)
+        */
+        private $personnalComputer = False;
+    
+       /**
+        * @var string
+        *
+        * @ORM\Column(name="isValid", type="integer", nullable=true)
+        */
+        private $isValid;
+    
+        public function __construct()
+        {
+            parent::__construct();
+            $this->isValid = 1;
+        }
+    }

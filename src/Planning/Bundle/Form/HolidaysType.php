@@ -15,13 +15,13 @@ class HolidaysType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('start',  'date',     array(
+            ->add('start', 'date', array(
                 'widget' => 'single_text',
             ))
-            ->add('end',    'date',     array(
+            ->add('end', 'date', array(
                 'widget' => 'single_text',
             ))
-            ->add('save',   'submit')
+            ->add('save', 'submit')
         ;
     }
     

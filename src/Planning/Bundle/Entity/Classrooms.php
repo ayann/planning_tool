@@ -36,7 +36,7 @@ class Classrooms
     private $capacity;
 
     /**
-     * @var integer
+     * Set number
      *
      * @ORM\Column(name="number_of_computer", type="integer")
      */
@@ -201,4 +201,59 @@ class Classrooms
         return "Salle N° $this->number | $this->establishment";
     }
 
+    /**
+     * Get capacity
+     *
+     * @return integer 
+     */
+    public function getCapacity()
+    {
+        return $this->capacity;
+    }
+
+    /**
+     * Set numberOfComputer
+     *
+     * @param integer $numberOfComputer
+     * @return Classrooms
+     */
+    public function setNumberOfComputer($numberOfComputer)
+    {
+        $this->numberOfComputer = $numberOfComputer;
+
+        return $this;
+    }
+
+    /**
+     * Get numberOfComputer
+     *
+     * @return integer 
+     */
+    public function getNumberOfComputer()
+    {
+        return $this->numberOfComputer;
+    }
+
+    /**
+     * Set establishment
+     *
+     * @param \Planning\Bundle\Entity\Establishments $establishment
+     * @return Classrooms
+     */
+    public function setEstablishment(\Planning\Bundle\Entity\Establishments $establishment)
+    {
+        $this->establishment = $establishment;
+
+        return $this;
+    }
+
+    /**
+     * Get establishment
+     *
+     * @return \Planning\Bundle\Entity\Establishments 
+     */
+    public function getEstablishment()
+    {
+        return $this->establishment;
+    }
 }

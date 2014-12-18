@@ -56,8 +56,6 @@ class Soutenances
      */
     private $classroomsId;
 
-
-
     /**
      * Get id
      *
