@@ -251,11 +251,68 @@ class Plannings
          
         if($start_date >= $end_date){
             $context->addViolationAt(
-                'end',
+                'end_time',
                 'Erreur! la date de fin est inférieure à la date de début',
                 array(),
                 null
             );
         }
+    }
+
+    /**
+     * @var \DateTime
+     */
+    private $startTime;
+
+    /**
+     * @var \DateTime
+     */
+    private $endTime;
+
+
+    /**
+     * Set startTime
+     *
+     * @param \DateTime $startTime
+     * @return Plannings
+     */
+    public function setStartTime($startTime)
+    {
+        $this->startTime = $startTime;
+
+        return $this;
+    }
+
+    /**
+     * Get startTime
+     *
+     * @return \DateTime 
+     */
+    public function getStartTime()
+    {
+        return $this->startTime;
+    }
+
+    /**
+     * Set endTime
+     *
+     * @param \DateTime $endTime
+     * @return Plannings
+     */
+    public function setEndTime($endTime)
+    {
+        $this->endTime = $endTime;
+
+        return $this;
+    }
+
+    /**
+     * Get endTime
+     *
+     * @return \DateTime 
+     */
+    public function getEndTime()
+    {
+        return $this->endTime;
     }
 }

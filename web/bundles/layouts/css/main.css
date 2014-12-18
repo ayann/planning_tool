@@ -109,4 +109,12 @@ a.plan { color: #2C3E50; }
 
 .inner_sidebar_ul { margin-left: -15px; margin-right: -15px; padding: 0 27px !important; }
 
-select { border-radius: 0 !important; -webkit-appearance: none; box-shadow: none !important; }
+.except_right_side { margin-right: 0 !important; margin-bottom: 10px; }
+
+.side_right_button_row { width: 15%; display: inline-block; float: right; }
+.side_right_button_row .right { width: 100% !important; }
+.side_right_button_row .right .left_side_block { width: 100% !important; }
+
+.message_row { display: inline-block; width: 88%; float: left; }
+
+.clear_box { clear: both; }

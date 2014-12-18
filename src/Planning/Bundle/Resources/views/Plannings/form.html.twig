@@ -1,51 +1,112 @@
-{{ form_errors(form) }}
 <div class="form-group">
-    {{ form_label(form.course, "Formation", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            {{ form_label(form.course, "Formation", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+        
+            <div class="col-sm-8">
+                {{ form_widget(form.course, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+    </div>
 
-    {{ form_errors(form.course) }}
-
-    <div class="col-sm-8">
-        {{ form_widget(form.course, {'attr': {'class': 'form-control'}}) }}
+    <div class="errors">
+        {{ form_errors(form.course) }}
     </div>
 </div>
 
 <div class="form-group">
-    {{ form_label(form.promo, "Promotion", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            {{ form_label(form.promo, "Promotion", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+        
+            <div class="col-sm-8">
+                {{ form_widget(form.promo, {'attr': {'class': 'form-control'}}) }}
+            </div>        
+        </div>
+    </div>
 
-    {{ form_errors(form.promo) }}
-
-    <div class="col-sm-8">
-        {{ form_widget(form.promo, {'attr': {'class': 'form-control'}}) }}
+    <div class="errors">
+        {{ form_errors(form.promo) }}
     </div>
 </div>
 
 <div class="form-group">
-    {{ form_label(form.classroom, "Salle", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            {{ form_label(form.classroom, "Salle", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+        
+            <div class="col-sm-8">
+                {{ form_widget(form.classroom, {'attr': {'class': 'form-control'}}) }}
+            </div>        
+        </div>
+    </div>
 
-    {{ form_errors(form.classroom) }}
-
-    <div class="col-sm-8">
-        {{ form_widget(form.classroom, {'attr': {'class': 'form-control'}}) }}
+    <div class="errors">
+        {{ form_errors(form.classroom) }}
     </div>
 </div>
 
 <div class="form-group">
-    {{ form_label(form.startTime, "Date et heure de début", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            {{ form_label(form.start, "Date et heure de début", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+        
+            <div class="col-sm-8">
+                {{ form_widget(form.start, {'attr': {'required':'required'}}) }}
+            </div>        
+        </div>
+    </div>
 
-    {{ form_errors(form.startTime) }}
-
-    <div class="col-sm-8">
-        {{ form_widget(form.startTime, {'attr': {'required':'required'}}) }}
+    <div class="errors">
+        {{ form_errors(form.start) }}
     </div>
 </div>
 
 <div class="form-group">
-    {{ form_label(form.endTime, "Date et heure de début", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            {{ form_label(form.end, "Date et heure de fin", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+        
+            <div class="col-sm-8">
+                {{ form_widget(form.end, {'attr': {'required':'required'}}) }}
+            </div>        
+        </div>
+    </div>
+    
+    <div class="errors">
+        {{ form_errors(form.end) }}
+    </div>
+</div>
 
-    {{ form_errors(form.endTime) }}
+<div class="form-group">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            {{ form_label(form.content, "Contenu", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+        
+            <div class="col-sm-8">
+                {{ form_widget(form.content, {'attr': {'required':'required', 'class':'form-control'}}) }}
+            </div>        
+        </div>
+    </div>
 
-    <div class="col-sm-8">
-        {{ form_widget(form.endTime, {'attr': {'required':'required'}}) }}
+    <div class="errors">
+        {{ form_errors(form.content) }}
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            {{ form_label(form.description, "Description", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+        
+            <div class="col-sm-8">
+                {{ form_widget(form.description, {'attr': {'required':'required', 'class':'form-control'}}) }}
+            </div>        
+        </div>
+    </div>
+
+    <div class="errors">
+        {{ form_errors(form.description) }}
     </div>
 </div>
 

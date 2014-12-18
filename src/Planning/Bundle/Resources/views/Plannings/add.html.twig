@@ -11,6 +11,8 @@
 {% endblock %}
 
 {% block main_content %}
+    <div class="clear_box"></div>
+
     <div class="row">
         <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 center-box">
             <div class="well white_well animated zoomIn">
@@ -23,22 +25,3 @@
         </div>
     </div>
 {% endblock main_content %}
-
-{% block javascripts %}
-    
-    {{ parent() }}
-    <script type="text/javascript">
-        jQuery(document).ready(function($) {
-            $('#planning_bundle_plannings_startTime_date, #planning_bundle_plannings_endTime_date').datetimepicker({
-                lang:'fr',
-                timepicker:false,
-                format:'Y-m-d'
-            });
-            $('#planning_bundle_plannings_startTime_time, #planning_bundle_plannings_endTime_time').datetimepicker({
-                datepicker:false,
-                format:'H:i'
-            });
-        });
-    </script>
-{% endblock %}
-

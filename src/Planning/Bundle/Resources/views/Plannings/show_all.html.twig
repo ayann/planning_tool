@@ -1,0 +1,44 @@
+{% extends 'PlanningBundle::layout.html.twig' %}
+
+{% block title %}Insta | Consulter un planning{% endblock %}
+
+{% block localisation %}
+    Consulter un planning
+{% endblock %}
+
+{% block ariane %}
+    <span class="active"><i class="fa fa-home"></i><a href="">Home</a></span>/ Consulter un planning
+{% endblock %}
+
+{% block main_content %}
+    <div class="clear_box"></div>
+
+    <div class="row">
+        <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 center-box">
+            <div class="well white_well animated zoomIn">
+                {% if promos|length > 0 %}
+                    <table class="row-border" id="table_id">
+                        <thead>
+                            <tr>
+                                <th>Numero</th>
+                                <th>Voir le planning</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for promo in promos %}
+                                <tr>
+                                    <td>{{ promo.number }}</td>
+                                    
+                                    <td><a href="{{ path('planning_edit_course', { 'id': promo.id }) }}" class="edit" title="Modifier"><i class="fa fa-folder-open-o"></i> Consulter</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="text-center">Aucune promotion renseignée</p>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+{% endblock main_content %}

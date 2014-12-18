@@ -3,8 +3,30 @@ planning_index:
     defaults:  { _controller: PlanningBundle:Plannings:index }
 
 planning_get_add:
-    path:   /planning/add
+    path:   /plannings
     defaults:  { _controller: PlanningBundle:Plannings:getAdd }
+
+planning_add:
+    path:   /planning/add
+    defaults:  { _controller: PlanningBundle:Plannings:add }
+
+planning_edit:
+    path:   /planning/{id}/edit
+    defaults:  { _controller: PlanningBundle:Plannings:edit }
+    requirements:
+        id: \d+
+
+planning_delete:
+    path:   /planning/{id}/delete
+    defaults:  { _controller: PlanningBundle:Plannings:delete }
+    requirements:
+        id: \d+
+
+planning_show_all:
+    path:   /plannings/consulter
+    defaults:  { _controller: PlanningBundle:Plannings:showAll }
+    requirements:
+        id: \d+
 
 # establishments routes
 

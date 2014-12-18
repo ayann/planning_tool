@@ -15,14 +15,13 @@ class PlanningsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('startTime', null, array('date_widget' => "single_text", 'time_widget' => "single_text"))
-            ->add('endTime', null, array('date_widget' => "single_text", 'time_widget' => "single_text"))
+            ->add('start', null, array('date_widget' => "single_text", 'time_widget' => "single_text"))
+            ->add('end', null, array('date_widget' => "single_text", 'time_widget' => "single_text"))
             ->add('classroom', null, array('empty_value' => 'Choisissez une salle'))
             ->add('promo', null, array('empty_value' => 'Choisissez une promo'))
             ->add('course', null, array('empty_value' => 'Choisissez un module'))
-            // ->add('month')
-            // ->add('content')
-            // ->add('description')
+            ->add('content')
+            ->add('description')
             ->add('save', 'submit')
         ;
     }

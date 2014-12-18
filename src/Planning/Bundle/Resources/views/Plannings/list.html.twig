@@ -1,0 +1,111 @@
+{% extends 'PlanningBundle::layout.html.twig' %}
+
+{% block title %}Insta | Liste des cours plannifiés{% endblock %}
+
+{% block localisation %}
+    Liste des cours plannifiés
+{% endblock %}
+
+{% block ariane %}
+    <span class="active"><i class="fa fa-home"></i><a href="">Home</a></span>/ Liste des cours plannifiés
+{% endblock %}
+
+{% block main_content %}
+    <div class="row">
+        <div class="row">
+
+            <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                {% if form_errors(form.start) or form_errors(form.end) %}
+                    <div class="alert animated shake alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <p>{{ form_errors(form.start) }}</p>
+                        <p>{{ form_errors(form.end) }}</p>
+                    </div>
+                {% endif %}
+                <div class="well white_well animated zoomIn">
+                    {% if plannings|length > 0 %}
+                        <table class="row-border" id="table_id">
+                            <thead>
+                                <tr>
+                                    <th>Promos</th>
+                                    <th>Formation</th>
+                                    <th>Salle</th>
+                                    <th>Date et heure de début</th>
+                                    <th>Date et heure de fin</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for planning in plannings %}
+                                    <tr>
+                                        <td>{{ planning.promo }}</td>
+                                        <td>{{ planning.course }}</td>
+                                        <td>{{ planning.classroom }}</td>
+                                        <td>{{ planning.start|date("D/d/M/Y/H:i")|datetime_french }}</td>
+                                        <td>{{ planning.end|date("D/d/M/Y/H:i")|datetime_french }}</td>
+                                        <td class="text-center"><a href="{{ path('planning_edit', { 'id': planning.id }) }}" class="edit" title="Modifier"><i class="fa fa-pencil-square-o"></i>  Modifier</a></td>
+
+                                        <td class="text-center">
+                                            <a onclick="return confirm('Êtes vous sûr de le supprimer?')" href="{{ path('planning_delete', { 'id': planning.id }) }}" class="remove" title="Supprimer">
+                                                <i class="fa fa-trash"></i> Supprimer
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <p class="text-center">Aucun cours planifié</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <div class="left_side_block animated bounceInRight">
+                    <a data-toggle="modal" href='#add_modal'>
+                        <div class="block_content">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                        <div class="block_footer">
+                            Ajouter
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        {% if form is defined %}
+            <div class="modal animated flipInX" id="add_modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">Renseigné un jour férié</h4>
+                        </div>
+                        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                            <div class="modal-body">
+                                <div class="well">
+                                    {{ include('PlanningBundle:Plannings:form.html.twig') }} 
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary btn-green'}, 'label': 'Créer' }) }}
+                            </div>
+                            {{ form_rest(form) }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock main_content %}

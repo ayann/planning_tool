@@ -18,10 +18,14 @@
 
                         <ul class="inner_sidebar_ul">
                             <p class="sub_title"><i class="fa fa-calendar"></i> Gestion des plannings</p>
+
                             <li class="{{ 'planning_get_add'|activeLink }}">
                                 <a href="{{ path('planning_get_add') }}"><i class="fa fa-newspaper-o"></i>Gestion des cours</a>
                             </li>
-                            <li><a href=""><i class="fa fa-clock-o"></i>Consulter un planning</a></li>
+                            
+                            <li class="{{ 'planning_show_all'|activeLink }}">
+                                <a href="{{ path('planning_show_all') }}"><i class="fa fa-clock-o"></i>Consulter un planning</a>
+                            </li>
 
                         </ul>
                         
@@ -82,6 +86,7 @@
                         </div>                        
                     </div>
 
+
                     {% block main_content %}
                     {% endblock %}
 
@@ -91,3 +96,19 @@
     </main>
 {% endblock body %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $('#planning_bundle_plannings_start_date, #planning_bundle_plannings_end_date').datetimepicker({
+                lang:'fr',
+                timepicker:false,
+                format:'Y-m-d'
+            });
+            $('#planning_bundle_plannings_start_time, #planning_bundle_plannings_end_time').datetimepicker({
+                datepicker:false,
+                format:'H:i'
+            });
+        });
+    </script>
+{% endblock %}

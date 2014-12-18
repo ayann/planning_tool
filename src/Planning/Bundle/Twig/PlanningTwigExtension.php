@@ -20,6 +20,7 @@ class PlanningTwigExtension extends \Twig_Extension{
         return array(
             new \Twig_SimpleFilter('activeLink', array($this, 'activeLinkFilter')),
             new \Twig_SimpleFilter('date_french', array($this, 'date_frenchFilter')),
+            new \Twig_SimpleFilter('datetime_french', array($this, 'datetime_frenchFilter')),
         );
     }
 
@@ -57,6 +58,13 @@ class PlanningTwigExtension extends \Twig_Extension{
         list($day, $day_num, $month, $year) = explode("/", $date);
 
         return "$Jour[$day] $day_num $Mois[$month] $year";
+    }
+
+    public function datetime_frenchFilter($date){
+        list($day, $day_num, $month, $year, $time) = explode("/", $date);
+        $d = "$day/$day_num/$month/$year";
+        list($hour, $mn) = explode(":", $time);
+        return $this->date_frenchFilter($d).' '.$hour."h $mn";
     }
 
     public function getName(){
