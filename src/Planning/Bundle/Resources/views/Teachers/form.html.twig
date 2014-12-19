@@ -1,0 +1,10 @@
+{{ form_errors(form) }}
+<div class="form-group">
+    {{ form_label(form.name, "Nom du module", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+    {{ form_errors(form.name) }}
+
+    <div class="col-sm-9">
+        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>

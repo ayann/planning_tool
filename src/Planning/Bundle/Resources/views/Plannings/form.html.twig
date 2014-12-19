@@ -17,6 +17,22 @@
 <div class="form-group">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            {{ form_label(form.teacher, "Professeur", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
+        
+            <div class="col-sm-8">
+                {{ form_widget(form.teacher, {'attr': {'class': 'form-control'}}) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="errors">
+        {{ form_errors(form.teacher) }}
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             {{ form_label(form.promo, "Promotion", {'label_attr': {'class': 'col-sm-4 control-label'}}) }}
         
             <div class="col-sm-8">

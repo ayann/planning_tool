@@ -17,6 +17,7 @@ class TeachersType extends AbstractType
         $builder
             ->add('lastName')
             ->add('firstName')
+            ->add('save', 'submit')
         ;
     }
     

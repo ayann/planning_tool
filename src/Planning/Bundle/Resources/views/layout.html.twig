@@ -11,53 +11,62 @@
                 </div>
 
                 <div class="sidebar_content">
-                    <ul>
-                        <li class="{{ 'planning_index'|activeLink }}">
-                            <a href="{{ path('planning_index') }}"><i class="fa fa-desktop"></i> Tableau de bord</a>
-                        </li>
-
-                        <ul class="inner_sidebar_ul">
-                            <p class="sub_title"><i class="fa fa-calendar"></i> Gestion des plannings</p>
-
-                            <li class="{{ 'planning_get_add'|activeLink }}">
-                                <a href="{{ path('planning_get_add') }}"><i class="fa fa-newspaper-o"></i>Gestion des cours</a>
+                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                        <ul>
+                            <li class="{{ 'planning_index'|activeLink }}">
+                                <a href="{{ path('planning_index') }}"><i class="fa fa-desktop"></i> Tableau de bord</a>
                             </li>
+
+                            <ul class="inner_sidebar_ul">
+                                <p class="sub_title"><i class="fa fa-calendar"></i> Gestion des plannings</p>
+
+                                <li class="{{ 'planning_get_add'|activeLink }}">
+                                    <a href="{{ path('planning_get_add') }}"><i class="fa fa-newspaper-o"></i>Gestion des cours</a>
+                                </li>
+                                
+                                <li class="{{ 'planning_show_all'|activeLink }} {{ 'planning_show'|activeLink }}">
+                                    <a href="{{ path('planning_show_all') }}"><i class="fa fa-clock-o"></i>Consulter un planning</a>
+                                </li>
+
+                            </ul>
                             
-                            <li class="{{ 'planning_show_all'|activeLink }} {{ 'planning_show'|activeLink }}">
-                                <a href="{{ path('planning_show_all') }}"><i class="fa fa-clock-o"></i>Consulter un planning</a>
+                            <li><a href=""><i class="fa fa-group"></i> Gestion des promos</a></li>
+
+                            <li class="{{ 'holidays'|activeLink }} {{ 'holiday_edit'|activeLink }}">
+                                <a href="{{ path('holidays') }}"><i class="fa fa-plane"></i> Gestion des vacances</a>
                             </li>
 
+                            <li class="{{ 'publicholidays'|activeLink }} {{ 'publicholiday_edit'|activeLink }}">
+                                <a href="{{ path('publicholidays') }}"><i class="fa fa-calendar-o"></i>Gestion des jours fériés</a>
+                            </li>
+
+                            <li class="{{ 'classrooms'|activeLink }} {{ 'classroom_edit'|activeLink }}">
+                                <a href="{{ path('classrooms') }}"><i class="fa fa-cube"></i> Gestions des Salles</a>
+                            </li>
+
+                            <li class="{{ 'planning_establishments'|activeLink }} {{ 'planning_edit_establishment'|activeLink }}">
+                                <a href="{{ path('planning_establishments') }}">
+                                    <i class="fa fa-home"></i> Gestion des sites
+                                </a>
+                            </li>
+
+                            <li class="{{ 'planning_courses'|activeLink }} {{ 'planning_edit_course'|activeLink }}">
+                                <a href="{{ path('planning_courses') }}"><i class="fa fa-code"></i> Gestion des modules</a>
+                            </li>
+
+                            <li><a href=""><i class="fa fa-youtube-play"></i> Gestion des soutenances</a></li>
+                            
+                            <li class="{{ 'teachers'|activeLink }} {{ 'teacher_edit'|activeLink }}">
+                                <a href="{{ path('teachers') }}"><i class="fa fa-users"></i> Gestion des professeurs</a>
+                            </li>
                         </ul>
-                        
-                        <li><a href=""><i class="fa fa-group"></i> Gestion des promos</a></li>
-
-                        <li class="{{ 'holidays'|activeLink }} {{ 'holiday_edit'|activeLink }}">
-                            <a href="{{ path('holidays') }}"><i class="fa fa-plane"></i> Gestion des vacances</a>
-                        </li>
-
-                        <li class="{{ 'publicholidays'|activeLink }} {{ 'publicholiday_edit'|activeLink }}">
-                            <a href="{{ path('publicholidays') }}"><i class="fa fa-calendar-o"></i>Gestion des jours fériés</a>
-                        </li>
-
-                        <li class="{{ 'classrooms'|activeLink }} {{ 'classroom_edit'|activeLink }}">
-                            <a href="{{ path('classrooms') }}"><i class="fa fa-cube"></i> Gestions des Salles</a>
-                        </li>
-
-                        <li class="{{ 'planning_establishments'|activeLink }} {{ 'planning_edit_establishment'|activeLink }}">
-                            <a href="{{ path('planning_establishments') }}">
-                                <i class="fa fa-home"></i> Gestion des Établissements
-                            </a>
-                        </li>
-
-                        <li class="{{ 'planning_courses'|activeLink }} {{ 'planning_edit_course'|activeLink }}">
-                            <a href="{{ path('planning_courses') }}"><i class="fa fa-code"></i> Gestion des modules</a>
-                        </li>
-
-                        <li><a href=""><i class="fa fa-youtube-play"></i> Gestion des soutenances</a></li>
-                        
-                        <li><a href=""><i class="fa fa-users"></i> Gestion des professeurs</a></li>
-
-                    </ul>
+                    {% else %}
+                        <ul>
+                            <li class="{{ 'my_planning'|activeLink }}">
+                                <a href="{{ path('my_planning') }}"><i class="fa fa-calendar"></i> Mon Planning</a>
+                            </li>
+                        </ul>
+                    {% endif %}
                 </div>
             </div>
 

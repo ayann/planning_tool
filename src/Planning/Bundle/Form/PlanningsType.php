@@ -20,6 +20,7 @@ class PlanningsType extends AbstractType
             ->add('classroom', null, array('empty_value' => 'Choisissez une salle'))
             ->add('promo', null, array('empty_value' => 'Choisissez une promo'))
             ->add('course', null, array('empty_value' => 'Choisissez un module'))
+            ->add('teacher', null, array('empty_value' => 'Choisissez un professeur'))
             ->add('content')
             ->add('description')
             ->add('save', 'submit')

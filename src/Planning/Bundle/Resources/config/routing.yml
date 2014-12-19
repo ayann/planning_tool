@@ -123,3 +123,26 @@ holiday_delete:
     defaults:  { _controller: PlanningBundle:Holidays:delete }
     requirements:
         id: \d+
+
+#Teacher routes
+
+teachers:
+    path:   /professeurs
+    defaults:  { _controller: PlanningBundle:Teachers:index }
+
+teacher_edit:
+    path:   /professeur/{id}/edit
+    defaults:  { _controller: PlanningBundle:Teachers:edit }
+    requirements:
+        id: \d+
+
+teacher_delete:
+    path:   /professeur/{id}/delete
+    defaults:  { _controller: PlanningBundle:Teachers:delete }
+    requirements:
+        id: \d+
+
+my_planning:
+    path:   /mon-planning
+    defaults:  { _controller: PlanningBundle:Plannings:myPlanning }
+

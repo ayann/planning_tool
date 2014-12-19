@@ -41,6 +41,25 @@
                             title: "{{planning.course}}",
                             start: "{{planning.start|date_modify('+1 day')|date('Y-m-d/H:i:s')|full_calendar_iso_date}}",
                             end: "{{planning.end|date_modify('+1 day')|date('Y-m-d/H:i:s')|full_calendar_iso_date}}",
+                            backgroundColor: '#1BBC9B',
+                            borderColor: '#1BBC9B',
+                        },
+                    {% endfor %}
+                    {% for holiday in holidays %}
+                        {
+                            title: "Vacances scolaires",
+                            start: "{{holiday.start|date_modify('+1 day')|date('Y-m-d')}}",
+                            end: "{{holiday.end|date_modify('+1 day')|date('Y-m-d')}}",
+                            backgroundColor: '#2C3E50',
+                            borderColor: '#2C3E50',
+                        },
+                    {% endfor %}
+                    {% for publicHoliday in publicHolidays %}
+                        {
+                            title: "Férié",
+                            start: "{{publicHoliday.date|date_modify('+1 day')|date('Y-m-d')}}",
+                            backgroundColor: '#D5412B',
+                            borderColor: '#D5412B',
                         },
                     {% endfor %}
                 ]

@@ -10,8 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Planning\Bundle\Entity\PromosRepository")
  */
-class Promos
-{
+class Promos{
     /**
      * @var integer
      *
@@ -32,6 +31,11 @@ class Promos
     * @ORM\OneToMany(targetEntity="Plannings", mappedBy="promo", cascade={"remove", "persist"})
     */
     private $plannings;
+
+    /**
+    * @ORM\OneToMany(targetEntity="User\Bundle\Entity\User", mappedBy="promo", cascade={"remove", "persist"})
+    */
+    private $users;
 
 
     /**
@@ -110,5 +114,38 @@ class Promos
     public function __toString()
     {
         return $this->number;
+    }
+
+    /**
+     * Add users
+     *
+     * @param \User\Bundle\Entity\User $users
+     * @return Promos
+     */
+    public function addUser(\User\Bundle\Entity\User $users)
+    {
+        $this->users[] = $users;
+
+        return $this;
+    }
+
+    /**
+     * Remove users
+     *
+     * @param \User\Bundle\Entity\User $users
+     */
+    public function removeUser(\User\Bundle\Entity\User $users)
+    {
+        $this->users->removeElement($users);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }

@@ -70,6 +70,12 @@ class Plannings
      */
     private $course;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Teachers", inversedBy="plannings", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $teacher;
+
 
     /**
      * Get id
@@ -257,5 +263,28 @@ class Plannings
                 null
             );
         }
+    }
+
+    /**
+     * Set teacher
+     *
+     * @param \Planning\Bundle\Entity\Teachers $teacher
+     * @return Plannings
+     */
+    public function setTeacher(\Planning\Bundle\Entity\Teachers $teacher)
+    {
+        $this->teacher = $teacher;
+
+        return $this;
+    }
+
+    /**
+     * Get teacher
+     *
+     * @return \Planning\Bundle\Entity\Teachers 
+     */
+    public function getTeacher()
+    {
+        return $this->teacher;
     }
 }

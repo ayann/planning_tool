@@ -1,13 +1,13 @@
 {% extends 'PlanningBundle::layout.html.twig' %}
 
-{% block title %}Insta | Gestion des établissements{% endblock %}
+{% block title %}Insta | Gestion des sites{% endblock %}
 
 {% block localisation %}
-    Gestion des établissements
+    Gestion des sites
 {% endblock %}
 
 {% block ariane %}
-    <span class="active"><i class="fa fa-home"></i><a href="">Home</a></span>/ Gestion des établissements
+    <span class="active"><i class="fa fa-home"></i><a href="">Home</a></span>/ Gestion des sites
 {% endblock %}
 
 {% block main_content %}
@@ -59,7 +59,7 @@
                         </tbody>
                     </table>
                 {% else %}
-                    <p class="text-center">Aucun établissement renseigné</p>
+                    <p class="text-center">Aucun site renseigné</p>
                 {% endif %}
             </div>
         </div>
@@ -85,7 +85,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">Ajouter un établissement</h4>
+                            <h4 class="modal-title">Ajouter un site</h4>
                         </div>
                         {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
                             <div class="modal-body">

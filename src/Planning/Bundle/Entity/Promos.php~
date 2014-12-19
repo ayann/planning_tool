@@ -5,13 +5,12 @@ namespace Planning\Bundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Teachers
+ * Promos
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Planning\Bundle\Entity\TeachersRepository")
+ * @ORM\Entity(repositoryClass="Planning\Bundle\Entity\PromosRepository")
  */
-class Teachers
-{
+class Promos{
     /**
      * @var integer
      *
@@ -24,21 +23,19 @@ class Teachers
     /**
      * @var string
      *
-     * @ORM\Column(name="last_name", type="string", length=255)
+     * @ORM\Column(name="number", type="string", length=9, nullable=true)
      */
-    private $lastName;
+    private $number;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="first_name", type="string", length=255)
-     */
-    private $firstName;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Plannings", mappedBy="course", cascade={"remove", "persist"})
-     */
+    * @ORM\OneToMany(targetEntity="Plannings", mappedBy="promo", cascade={"remove", "persist"})
+    */
     private $plannings;
+
+    /**
+    * @ORM\OneToMany(targetEntity="User\Bundle\Entity\User", mappedBy="promo", cascade={"remove", "persist"})
+    */
+    private $users;
 
 
     /**
@@ -52,49 +49,26 @@ class Teachers
     }
 
     /**
-     * Set lastName
+     * Set number
      *
-     * @param string $lastName
-     * @return Teachers
+     * @param string $number
+     * @return Promos
      */
-    public function setLastName($lastName)
+    public function setNumber($number)
     {
-        $this->lastName = $lastName;
-
+        $this->number = $number;
+    
         return $this;
     }
 
     /**
-     * Get lastName
+     * Get number
      *
      * @return string 
      */
-    public function getLastName()
+    public function getNumber()
     {
-        return $this->lastName;
-    }
-
-    /**
-     * Set firstName
-     *
-     * @param string $firstName
-     * @return Teachers
-     */
-    public function setFirstName($firstName)
-    {
-        $this->firstName = $firstName;
-
-        return $this;
-    }
-
-    /**
-     * Get firstName
-     *
-     * @return string 
-     */
-    public function getFirstName()
-    {
-        return $this->firstName;
+        return $this->number;
     }
     /**
      * Constructor
@@ -108,7 +82,7 @@ class Teachers
      * Add plannings
      *
      * @param \Planning\Bundle\Entity\Plannings $plannings
-     * @return Teachers
+     * @return Promos
      */
     public function addPlanning(\Planning\Bundle\Entity\Plannings $plannings)
     {
@@ -139,7 +113,6 @@ class Teachers
 
     public function __toString()
     {
-        return $this->firstName." ".$this->lastName;
+        return $this->number;
     }
-
 }

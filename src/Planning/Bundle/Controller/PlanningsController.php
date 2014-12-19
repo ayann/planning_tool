@@ -10,7 +10,13 @@ use Symfony\Component\HttpFoundation\Request;
 
 class PlanningsController extends Controller{
     public function indexAction(){
-        return $this->render('PlanningBundle:Plannings:index.html.twig', array('1' => 'x'));
+        $usr = $this->container->get('security.context')->getToken()->getUser();
+
+        if (in_array('ROLE_STUDENT', $usr->getRoles())) {
+            return $this->redirect($this->generateUrl('my_planning'));
+        }else{
+            return $this->render('PlanningBundle:Plannings:index.html.twig', array('1' => 'x'));
+        }
     }
 
     public function getAddAction(Request $request){
@@ -153,6 +159,8 @@ class PlanningsController extends Controller{
         $em = $this->getDoctrine()->getManager(); // Entity manager
 
         $promo = $em->getRepository('PlanningBundle:Promos')->find($id);
+        $holidays = $em->getRepository('PlanningBundle:Holidays')->findAll();
+        $publicHolidays = $em->getRepository('PlanningBundle:PublicHolidays')->findAll();
 
         if (!$promo) {
             $request->getSession()->getFlashBag()->add('alert', "La promotion d'id $id n'existe pas.");
@@ -161,9 +169,37 @@ class PlanningsController extends Controller{
 
         $plannings = $promo->getPlannings();
         return $this->render('PlanningBundle:Plannings:show.html.twig',
-            array('plannings' => $plannings)
+            array('plannings' => $plannings,
+                'holidays' => $holidays, 
+                'publicHolidays' => $publicHolidays
+            )
         );
     }
+
+    public function myPlanningAction(){
+        $em = $this->getDoctrine()->getManager(); // Entity manager
+
+        $usr = $this->container->get('security.context')->getToken()->getUser();
+
+        $promo = $usr->getPromo();
+        $holidays = $em->getRepository('PlanningBundle:Holidays')->findAll();
+        $publicHolidays = $em->getRepository('PlanningBundle:PublicHolidays')->findAll();
+
+        if (!$promo) {
+            $request->getSession()->getFlashBag()->add('alert', "La promotion d'id $id n'existe pas.");
+            return $this->redirect($this->generateUrl('planning_show_all'));
+        }
+
+        $plannings = $promo->getPlannings();
+        return $this->render('PlanningBundle:Plannings:show.html.twig',
+            array('plannings' => $plannings,
+                'holidays' => $holidays, 
+                'publicHolidays' => $publicHolidays
+            )
+        );
+    }
+
+
 
     public function getViewPlanningByDateAction($dateStart=null,$dateEnd=null){
         $value = array();
